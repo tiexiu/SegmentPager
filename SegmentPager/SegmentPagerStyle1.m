@@ -132,7 +132,7 @@
     CGFloat enteringBottom = [[self.enteringDic objectForKey:key] floatValue];
     
     UIViewController *vc = self.vcArray[index];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewController"] ) {
+    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"] ) {
         BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
         CGFloat contentOffsetY = v.baseScrollView.contentOffset.y;
         v.baseScrollView.contentOffset = CGPointMake(0, contentOffsetY-enteringBottom+leavingBottom);
