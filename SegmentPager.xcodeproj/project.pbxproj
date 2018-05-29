@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		122C79F120AE95C200B5FFE6 /* SegmentPagerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 122C79F020AE95C200B5FFE6 /* SegmentPagerStyle2.m */; };
+		1230D86920AC4CEB00C48E24 /* GestureRecognizerTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1230D86820AC4CEB00C48E24 /* GestureRecognizerTableView.m */; };
+		1230D86C20AC4EBD00C48E24 /* TitleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1230D86B20AC4EBD00C48E24 /* TitleScrollView.m */; };
+		1280203C20ADA93100CF6487 /* GestureRecognizerCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1280203A20ADA93100CF6487 /* GestureRecognizerCollectionView.m */; };
+		12C81AD220B312F800AB8E2A /* SegmentPagerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12C81AD120B312F800AB8E2A /* SegmentPagerStyle1.m */; };
+		12D5C39C20BD3EE70046434E /* UIView+Layer.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D5C39A20BD3EE70046434E /* UIView+Layer.m */; };
+		12D5C39F20BD4B930046434E /* TableViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */; };
+		12D6597E20AC399100AF9CAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D6597D20AC399100AF9CAB /* AppDelegate.m */; };
+		12D6598120AC399200AF9CAB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D6598020AC399200AF9CAB /* ViewController.m */; };
+		12D6598620AC399200AF9CAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D6598520AC399200AF9CAB /* Assets.xcassets */; };
+		12D6598C20AC399200AF9CAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D6598B20AC399200AF9CAB /* main.m */; };
+		12D6599B20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D6599A20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m */; };
+		12D659A120AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */; };
+		12D659A420AC3E4900AF9CAB /* CollectionViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */; };
+		12D659AA20AC3F0900AF9CAB /* GestureRecognizerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A920AC3F0900AF9CAB /* GestureRecognizerScrollView.m */; };
+		12D659B220AC40D500AF9CAB /* HitTestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659B020AC40D500AF9CAB /* HitTestScrollView.m */; };
+		12D659B520AC418E00AF9CAB /* HorizontalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659B420AC418D00AF9CAB /* HorizontalCollectionView.m */; };
+		12E9052820B7BB51008E745C /* HitTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9052720B7BB51008E745C /* HitTestView.m */; };
+		12E9057920B80456008E745C /* BaseSubScrollViewControllerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */; };
+		12E9057C20B8049F008E745C /* CollectionViewControllerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9057B20B8049F008E745C /* CollectionViewControllerStyle2.m */; };
+		12E9057F20B804FD008E745C /* TableViewControllerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9057E20B804FD008E745C /* TableViewControllerStyle2.m */; };
+		12E9058220B8050A008E745C /* ScrollViewControllerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9058120B8050A008E745C /* ScrollViewControllerStyle2.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		122C79EF20AE95C200B5FFE6 /* SegmentPagerStyle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentPagerStyle2.h; sourceTree = "<group>"; };
+		122C79F020AE95C200B5FFE6 /* SegmentPagerStyle2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentPagerStyle2.m; sourceTree = "<group>"; };
+		1230D86720AC4CEB00C48E24 /* GestureRecognizerTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerTableView.h; sourceTree = "<group>"; };
+		1230D86820AC4CEB00C48E24 /* GestureRecognizerTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureRecognizerTableView.m; sourceTree = "<group>"; };
+		1230D86A20AC4EBC00C48E24 /* TitleScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleScrollView.h; sourceTree = "<group>"; };
+		1230D86B20AC4EBD00C48E24 /* TitleScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleScrollView.m; sourceTree = "<group>"; };
+		1280203A20ADA93100CF6487 /* GestureRecognizerCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureRecognizerCollectionView.m; sourceTree = "<group>"; };
+		1280203B20ADA93100CF6487 /* GestureRecognizerCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerCollectionView.h; sourceTree = "<group>"; };
+		12C81AD020B312F800AB8E2A /* SegmentPagerStyle1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SegmentPagerStyle1.h; sourceTree = "<group>"; };
+		12C81AD120B312F800AB8E2A /* SegmentPagerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentPagerStyle1.m; sourceTree = "<group>"; };
+		12D5C39A20BD3EE70046434E /* UIView+Layer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layer.m"; sourceTree = "<group>"; };
+		12D5C39B20BD3EE70046434E /* UIView+Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layer.h"; sourceTree = "<group>"; };
+		12D5C39D20BD4B930046434E /* TableViewControllerStyle1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewControllerStyle1.h; sourceTree = "<group>"; };
+		12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerStyle1.m; sourceTree = "<group>"; };
+		12D6597920AC399100AF9CAB /* SegmentPager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegmentPager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12D6597C20AC399100AF9CAB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		12D6597D20AC399100AF9CAB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		12D6597F20AC399100AF9CAB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		12D6598020AC399200AF9CAB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		12D6598520AC399200AF9CAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12D6598A20AC399200AF9CAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D6598B20AC399200AF9CAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		12D6599520AC3C9C00AF9CAB /* PrefixHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.h; sourceTree = "<group>"; };
+		12D6599920AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSubScrollViewControllerStyle1.h; sourceTree = "<group>"; };
+		12D6599A20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSubScrollViewControllerStyle1.m; sourceTree = "<group>"; };
+		12D6599F20AC3E3E00AF9CAB /* ScrollViewControllerStyle1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewControllerStyle1.h; sourceTree = "<group>"; };
+		12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewControllerStyle1.m; sourceTree = "<group>"; };
+		12D659A220AC3E4900AF9CAB /* CollectionViewControllerStyle1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewControllerStyle1.h; sourceTree = "<group>"; };
+		12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewControllerStyle1.m; sourceTree = "<group>"; };
+		12D659A820AC3F0900AF9CAB /* GestureRecognizerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerScrollView.h; sourceTree = "<group>"; };
+		12D659A920AC3F0900AF9CAB /* GestureRecognizerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureRecognizerScrollView.m; sourceTree = "<group>"; };
+		12D659B020AC40D500AF9CAB /* HitTestScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitTestScrollView.m; sourceTree = "<group>"; };
+		12D659B120AC40D500AF9CAB /* HitTestScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HitTestScrollView.h; sourceTree = "<group>"; };
+		12D659B320AC418D00AF9CAB /* HorizontalCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalCollectionView.h; sourceTree = "<group>"; };
+		12D659B420AC418D00AF9CAB /* HorizontalCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalCollectionView.m; sourceTree = "<group>"; };
+		12E9052620B7BB51008E745C /* HitTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HitTestView.h; sourceTree = "<group>"; };
+		12E9052720B7BB51008E745C /* HitTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitTestView.m; sourceTree = "<group>"; };
+		12E9057720B80456008E745C /* BaseSubScrollViewControllerStyle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseSubScrollViewControllerStyle2.h; sourceTree = "<group>"; };
+		12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseSubScrollViewControllerStyle2.m; sourceTree = "<group>"; };
+		12E9057A20B8049F008E745C /* CollectionViewControllerStyle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewControllerStyle2.h; sourceTree = "<group>"; };
+		12E9057B20B8049F008E745C /* CollectionViewControllerStyle2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewControllerStyle2.m; sourceTree = "<group>"; };
+		12E9057D20B804FD008E745C /* TableViewControllerStyle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewControllerStyle2.h; sourceTree = "<group>"; };
+		12E9057E20B804FD008E745C /* TableViewControllerStyle2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerStyle2.m; sourceTree = "<group>"; };
+		12E9058020B8050A008E745C /* ScrollViewControllerStyle2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollViewControllerStyle2.h; sourceTree = "<group>"; };
+		12E9058120B8050A008E745C /* ScrollViewControllerStyle2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollViewControllerStyle2.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12D6597620AC399100AF9CAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12D6597020AC399100AF9CAB = {
+			isa = PBXGroup;
+			children = (
+				12D6597B20AC399100AF9CAB /* SegmentPager */,
+				12D6597A20AC399100AF9CAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		12D6597A20AC399100AF9CAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12D6597920AC399100AF9CAB /* SegmentPager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		12D6597B20AC399100AF9CAB /* SegmentPager */ = {
+			isa = PBXGroup;
+			children = (
+				12D6597C20AC399100AF9CAB /* AppDelegate.h */,
+				12D6597D20AC399100AF9CAB /* AppDelegate.m */,
+				12D6597F20AC399100AF9CAB /* ViewController.h */,
+				12D6598020AC399200AF9CAB /* ViewController.m */,
+				12D6599520AC3C9C00AF9CAB /* PrefixHeader.h */,
+				12D6598520AC399200AF9CAB /* Assets.xcassets */,
+				12D6598A20AC399200AF9CAB /* Info.plist */,
+				12D6598B20AC399200AF9CAB /* main.m */,
+				12E9052920B7FB09008E745C /* Each SubTableView Can Pull To Refresh */,
+				12E9052A20B7FBA3008E745C /* Only Main SuperView Can Pull To Refresh */,
+				12D659B620AC41A000AF9CAB /* TitleScollView&HorizontalCollection */,
+				12D659AE20AC3F8B00AF9CAB /* Rewrite */,
+			);
+			path = SegmentPager;
+			sourceTree = "<group>";
+		};
+		12D6599820AC3DBF00AF9CAB /* SubViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12D6599920AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.h */,
+				12D6599A20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m */,
+				12D659AF20AC3FA500AF9CAB /* SubViewControllers */,
+			);
+			name = SubViewController;
+			sourceTree = "<group>";
+		};
+		12D659AE20AC3F8B00AF9CAB /* Rewrite */ = {
+			isa = PBXGroup;
+			children = (
+				12D5C39B20BD3EE70046434E /* UIView+Layer.h */,
+				12D5C39A20BD3EE70046434E /* UIView+Layer.m */,
+				1230D86720AC4CEB00C48E24 /* GestureRecognizerTableView.h */,
+				1230D86820AC4CEB00C48E24 /* GestureRecognizerTableView.m */,
+				12D659A820AC3F0900AF9CAB /* GestureRecognizerScrollView.h */,
+				12D659A920AC3F0900AF9CAB /* GestureRecognizerScrollView.m */,
+				1280203B20ADA93100CF6487 /* GestureRecognizerCollectionView.h */,
+				1280203A20ADA93100CF6487 /* GestureRecognizerCollectionView.m */,
+				12E9052620B7BB51008E745C /* HitTestView.h */,
+				12E9052720B7BB51008E745C /* HitTestView.m */,
+				12D659B120AC40D500AF9CAB /* HitTestScrollView.h */,
+				12D659B020AC40D500AF9CAB /* HitTestScrollView.m */,
+			);
+			name = Rewrite;
+			sourceTree = "<group>";
+		};
+		12D659AF20AC3FA500AF9CAB /* SubViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				12D5C39D20BD4B930046434E /* TableViewControllerStyle1.h */,
+				12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */,
+				12D6599F20AC3E3E00AF9CAB /* ScrollViewControllerStyle1.h */,
+				12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */,
+				12D659A220AC3E4900AF9CAB /* CollectionViewControllerStyle1.h */,
+				12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */,
+			);
+			name = SubViewControllers;
+			sourceTree = "<group>";
+		};
+		12D659B620AC41A000AF9CAB /* TitleScollView&HorizontalCollection */ = {
+			isa = PBXGroup;
+			children = (
+				1230D86A20AC4EBC00C48E24 /* TitleScrollView.h */,
+				1230D86B20AC4EBD00C48E24 /* TitleScrollView.m */,
+				12D659B320AC418D00AF9CAB /* HorizontalCollectionView.h */,
+				12D659B420AC418D00AF9CAB /* HorizontalCollectionView.m */,
+			);
+			name = "TitleScollView&HorizontalCollection";
+			sourceTree = "<group>";
+		};
+		12E9052920B7FB09008E745C /* Each SubTableView Can Pull To Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				12C81AD020B312F800AB8E2A /* SegmentPagerStyle1.h */,
+				12C81AD120B312F800AB8E2A /* SegmentPagerStyle1.m */,
+				12D6599820AC3DBF00AF9CAB /* SubViewController */,
+			);
+			name = "Each SubTableView Can Pull To Refresh";
+			sourceTree = "<group>";
+		};
+		12E9052A20B7FBA3008E745C /* Only Main SuperView Can Pull To Refresh */ = {
+			isa = PBXGroup;
+			children = (
+				122C79EF20AE95C200B5FFE6 /* SegmentPagerStyle2.h */,
+				122C79F020AE95C200B5FFE6 /* SegmentPagerStyle2.m */,
+				12E9052B20B7FC8E008E745C /* BaseSubScrollViewController */,
+			);
+			name = "Only Main SuperView Can Pull To Refresh";
+			sourceTree = "<group>";
+		};
+		12E9052B20B7FC8E008E745C /* BaseSubScrollViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12E9057720B80456008E745C /* BaseSubScrollViewControllerStyle2.h */,
+				12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */,
+				12E9052C20B7FCAE008E745C /* SubViewConreollers */,
+			);
+			name = BaseSubScrollViewController;
+			sourceTree = "<group>";
+		};
+		12E9052C20B7FCAE008E745C /* SubViewConreollers */ = {
+			isa = PBXGroup;
+			children = (
+				12E9057D20B804FD008E745C /* TableViewControllerStyle2.h */,
+				12E9057E20B804FD008E745C /* TableViewControllerStyle2.m */,
+				12E9058020B8050A008E745C /* ScrollViewControllerStyle2.h */,
+				12E9058120B8050A008E745C /* ScrollViewControllerStyle2.m */,
+				12E9057A20B8049F008E745C /* CollectionViewControllerStyle2.h */,
+				12E9057B20B8049F008E745C /* CollectionViewControllerStyle2.m */,
+			);
+			name = SubViewConreollers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12D6597820AC399100AF9CAB /* SegmentPager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12D6598F20AC399200AF9CAB /* Build configuration list for PBXNativeTarget "SegmentPager" */;
+			buildPhases = (
+				12D6597520AC399100AF9CAB /* Sources */,
+				12D6597620AC399100AF9CAB /* Frameworks */,
+				12D6597720AC399100AF9CAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SegmentPager;
+			productName = SegmentPager;
+			productReference = 12D6597920AC399100AF9CAB /* SegmentPager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12D6597120AC399100AF9CAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = s;
+				TargetAttributes = {
+					12D6597820AC399100AF9CAB = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 12D6597420AC399100AF9CAB /* Build configuration list for PBXProject "SegmentPager" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 12D6597020AC399100AF9CAB;
+			productRefGroup = 12D6597A20AC399100AF9CAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12D6597820AC399100AF9CAB /* SegmentPager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12D6597720AC399100AF9CAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12D6598620AC399200AF9CAB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12D6597520AC399100AF9CAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12E9052820B7BB51008E745C /* HitTestView.m in Sources */,
+				12D659A420AC3E4900AF9CAB /* CollectionViewControllerStyle1.m in Sources */,
+				12D659A120AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m in Sources */,
+				12E9057920B80456008E745C /* BaseSubScrollViewControllerStyle2.m in Sources */,
+				12D6598120AC399200AF9CAB /* ViewController.m in Sources */,
+				12C81AD220B312F800AB8E2A /* SegmentPagerStyle1.m in Sources */,
+				12D6599B20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m in Sources */,
+				12E9057C20B8049F008E745C /* CollectionViewControllerStyle2.m in Sources */,
+				1280203C20ADA93100CF6487 /* GestureRecognizerCollectionView.m in Sources */,
+				12D6598C20AC399200AF9CAB /* main.m in Sources */,
+				12D5C39F20BD4B930046434E /* TableViewControllerStyle1.m in Sources */,
+				1230D86920AC4CEB00C48E24 /* GestureRecognizerTableView.m in Sources */,
+				12E9057F20B804FD008E745C /* TableViewControllerStyle2.m in Sources */,
+				12D5C39C20BD3EE70046434E /* UIView+Layer.m in Sources */,
+				122C79F120AE95C200B5FFE6 /* SegmentPagerStyle2.m in Sources */,
+				12E9058220B8050A008E745C /* ScrollViewControllerStyle2.m in Sources */,
+				12D659B220AC40D500AF9CAB /* HitTestScrollView.m in Sources */,
+				12D659B520AC418E00AF9CAB /* HorizontalCollectionView.m in Sources */,
+				1230D86C20AC4EBD00C48E24 /* TitleScrollView.m in Sources */,
+				12D659AA20AC3F0900AF9CAB /* GestureRecognizerScrollView.m in Sources */,
+				12D6597E20AC399100AF9CAB /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		12D6598D20AC399200AF9CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		12D6598E20AC399200AF9CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12D6599020AC399200AF9CAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4Q4ZCAR3U3;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SegmentPager/PrefixHeader.h;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = SegmentPager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shen.s1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12D6599120AC399200AF9CAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4Q4ZCAR3U3;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SegmentPager/PrefixHeader.h;
+				HEADER_SEARCH_PATHS = "";
+				INFOPLIST_FILE = SegmentPager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.shen.s1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12D6597420AC399100AF9CAB /* Build configuration list for PBXProject "SegmentPager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D6598D20AC399200AF9CAB /* Debug */,
+				12D6598E20AC399200AF9CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12D6598F20AC399200AF9CAB /* Build configuration list for PBXNativeTarget "SegmentPager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12D6599020AC399200AF9CAB /* Debug */,
+				12D6599120AC399200AF9CAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 12D6597120AC399100AF9CAB /* Project object */;
+}
