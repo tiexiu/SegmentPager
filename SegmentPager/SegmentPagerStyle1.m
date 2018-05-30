@@ -20,8 +20,6 @@
 {
     CGFloat titleFontSize;
     CGFloat titleScrollHeight;
-    CGFloat pageWidth;
-    CGFloat pageHeight;
     
     // 顶部视图的高度
     CGFloat topEdgeInset;
@@ -49,16 +47,13 @@
 
 @implementation SegmentPagerStyle1
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    pageWidth = self.view.bounds.size.width;
-    pageHeight = self.view.bounds.size.height;
+}
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+
     topEdgeInset = BANNER_HEIGHT;
     titleFontSize = SCROLLTITLE_FONTSIZE;
     scrollingOffsetY = -topEdgeInset;
@@ -70,10 +65,12 @@
     [self.titleScrollBackgroundView addSubview:self.titleScroll];
     [self.titleScrollBackgroundView addSubview:self.bannerBackview];
     [self.bannerBackview addSubview:self.banner];
-    
-    
-   
-    
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 #pragma --mark SubScrollViewDidScrollDelegate
 - (void)subScrollViewWillBeginDraggin:(UIScrollView *)scrollView {
@@ -137,12 +134,11 @@
 #pragma --mark 监听事件
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     CGRect titleRect = [(NSValue *)[change objectForKey:@"new"] CGRectValue];
-    CGFloat titleBottom = titleRect.origin.y + titleRect.size.height;
-    CGFloat titleHeight = titleRect.size.height;
+    CGFloat titleBottom = CGRectGetMaxY(titleRect);
+    CGFloat titleHeight = CGRectGetHeight(titleRect);
 
-    self.bannerBackview.frame = CGRectMake(0, titleBottom-topEdgeInset, pageWidth, topEdgeInset-titleHeight);
-    self.banner.frame = CGRectMake(0,topEdgeInset -titleBottom, pageWidth, topEdgeInset-titleHeight);
-//    self.statusBackgroundView.alpha = (topEdgeInset-titleBottom)/(topEdgeInset-titleHeight);
+    self.bannerBackview.frame = CGRectMake(0, titleBottom-topEdgeInset, CGRectGetWidth(self.view.frame), topEdgeInset-titleHeight);
+    self.banner.frame = CGRectMake(0,topEdgeInset -titleBottom, CGRectGetWidth(self.view.frame), topEdgeInset-titleHeight);
 }
 #pragma --mark bannerTapAction
 - (void)tapOnImage {
@@ -181,8 +177,9 @@
 }
 - (HorizontalCollectionView *)horizontalCollection {
     if (_horizontalCollection == nil) {
-        _horizontalCollection = [[HorizontalCollectionView alloc] initWithFrame:CGRectMake(0, 0, pageWidth, pageHeight- TOP_BAR_HEIGHT)];
+        _horizontalCollection = [[HorizontalCollectionView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
         [_horizontalCollection contentCollectionViewWithControllers:self.vcArray index:0];
+
         _horizontalCollection.horizontalCollectionViewScrollDelegate = self;
         _horizontalCollection.horizontalCellDisplayDelegate = self;
     }
@@ -191,7 +188,7 @@
 
 - (HitTestView *)titleScrollBackgroundView {
     if (!_titleScrollBackgroundView) {
-        _titleScrollBackgroundView = [[HitTestView alloc] initWithFrame:CGRectMake(0, 0, pageWidth, pageHeight)];
+        _titleScrollBackgroundView = [[HitTestView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame))];
         _titleScrollBackgroundView.backgroundColor = [UIColor clearColor];
     }
     return _titleScrollBackgroundView;
@@ -214,14 +211,14 @@
 }
 - (UIView *)bannerBackview {
     if (!_bannerBackview) {
-        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, pageWidth, topEdgeInset-self.titleScroll.height)];
+        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, CGRectGetWidth(self.view.frame), topEdgeInset-self.titleScroll.height)];
         _bannerBackview.clipsToBounds = YES;
     }
     return _bannerBackview;
 }
 - (UIView *)banner {
     if (!_banner) {
-        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , pageWidth, topEdgeInset-self.titleScroll.height)];
+        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), topEdgeInset-self.titleScroll.height)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:_banner.bounds];
         imageView.image = [UIImage imageNamed:@"banner1"];
         imageView.contentMode = UIViewContentModeScaleAspectFill;

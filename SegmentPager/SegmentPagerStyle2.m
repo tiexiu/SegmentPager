@@ -50,12 +50,9 @@
 
 @implementation SegmentPagerStyle2
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+
     topEdgeInset = 200;
     titleFontSize = 25;
     canSuperScrollViewScroll = YES;
@@ -64,6 +61,12 @@
     [self.view addSubview:self.superScrollView];
     [self.superScrollView addSubview:self.titleScrollView];
     [self.superScrollView addSubview:self.horizontalCollectionView];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma --mark SubScrollViewDidScrollDelegate
@@ -161,7 +164,7 @@
 #pragma --mark LazyLoad
 - (HitTestScrollView *)superScrollView {
     if (_superScrollView == nil) {
-        CGRect superScrollViewFrame = CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame)-CGRectGetHeight(self.navigationController.navigationBar.frame)-CGRectGetHeight([UIApplication sharedApplication].statusBarFrame));
+        CGRect superScrollViewFrame = CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame));
         _superScrollView = [[HitTestScrollView alloc] initWithFrame:superScrollViewFrame];
         _superScrollView.contentSize = superScrollViewFrame.size;
         _superScrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
@@ -222,7 +225,7 @@
         CGRect bannerFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), topEdgeInset);
         _banner = [[UIImageView alloc] initWithFrame:bannerFrame];
         _banner.image = [UIImage imageNamed:@"banner1"];
-        _banner.contentMode = UIViewContentModeScaleAspectFit;
+        _banner.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _banner;
 }
