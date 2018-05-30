@@ -200,7 +200,7 @@
 
 - (NSArray *)titleArray {
     if (_titleArray == nil) {
-        _titleArray = [NSArray arrayWithObjects:@"tableView",@"scrollView",@"collectionView",@"4",@"你看你妈呢", nil];
+        _titleArray = [NSArray arrayWithObjects:@"tableView",@"scrollView",@"collectionView", nil];
     }
     return _titleArray;
 }
@@ -210,7 +210,7 @@
         _vcArray = [[NSMutableArray alloc] init];
         NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:self.titleArray.count];
         
-        [array addObjectsFromArray:@[self.table,self.scroller,self.collection,self.table,self.scroller]];
+        [array addObjectsFromArray:@[self.table,self.scroller,self.collection]];
         _vcArray = array;
     }
     return _vcArray;

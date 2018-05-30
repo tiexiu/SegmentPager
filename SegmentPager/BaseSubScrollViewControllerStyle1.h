@@ -1,5 +1,5 @@
 //
-//  BaseSubScrollViewController.h
+//  BaseSubScrollViewControllerStyle1.h
 //  SegmentPager
 //
 //  Created by s on 2018/5/16.

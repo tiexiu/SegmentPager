@@ -157,7 +157,7 @@
   
     [self.titleScroll updateTitleScrollViewWithIndex:targetIndex];
     UIViewController *vc = self.vcArray[targetIndex];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewController"]) {
+    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"]) {
         BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
         scrollingOffsetY = v.baseScrollView.contentOffset.y;
     }
@@ -168,7 +168,7 @@
 - (void)titleSelected:(NSInteger)index {
     [self.horizontalCollection updatePageWithIndex:index];
     UIViewController *vc = self.vcArray[index];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewController"]) {
+    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"]) {
         BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
         scrollingOffsetY = v.baseScrollView.contentOffset.y;
     }
