@@ -13,6 +13,10 @@
 #define BANNER_HEIGHT 210
 #define SCROLLTITLE_FONTSIZE 30
 
+
+#define Device_Is_iPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)，
+
+
 #define TOP_BAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height+self.navigationController.navigationBar.frame.size.height
 
 #define STATUS_BAR_HEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height

@@ -46,7 +46,7 @@ static NSString *newTableCellID = @"cijladfa";
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"点击了第%ld个cell",indexPath.row);
+    NSLog(@"点击了第%ld个cell",(long)indexPath.row);
 }
 
 - (UITableView *)tableView {

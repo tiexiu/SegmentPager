@@ -125,14 +125,18 @@
 			path = SegmentPager;
 			sourceTree = "<group>";
 		};
-		12D6599820AC3DBF00AF9CAB /* SubViewController */ = {
+		12D6599820AC3DBF00AF9CAB /* SubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				12D6599920AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.h */,
-				12D6599A20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m */,
-				12D659AF20AC3FA500AF9CAB /* SubViewControllers */,
+				12D5C39D20BD4B930046434E /* TableViewControllerStyle1.h */,
+				12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */,
+				12D6599F20AC3E3E00AF9CAB /* ScrollViewControllerStyle1.h */,
+				12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */,
+				12D659A220AC3E4900AF9CAB /* CollectionViewControllerStyle1.h */,
+				12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */,
+				12D659AF20AC3FA500AF9CAB /* BaseSubViewController */,
 			);
-			name = SubViewController;
+			name = SubViewControllers;
 			sourceTree = "<group>";
 		};
 		12D659AE20AC3F8B00AF9CAB /* Rewrite */ = {
@@ -154,17 +158,13 @@
 			name = Rewrite;
 			sourceTree = "<group>";
 		};
-		12D659AF20AC3FA500AF9CAB /* SubViewControllers */ = {
+		12D659AF20AC3FA500AF9CAB /* BaseSubViewController */ = {
 			isa = PBXGroup;
 			children = (
-				12D5C39D20BD4B930046434E /* TableViewControllerStyle1.h */,
-				12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */,
-				12D6599F20AC3E3E00AF9CAB /* ScrollViewControllerStyle1.h */,
-				12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */,
-				12D659A220AC3E4900AF9CAB /* CollectionViewControllerStyle1.h */,
-				12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */,
+				12D6599920AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.h */,
+				12D6599A20AC3DF600AF9CAB /* BaseSubScrollViewControllerStyle1.m */,
 			);
-			name = SubViewControllers;
+			name = BaseSubViewController;
 			sourceTree = "<group>";
 		};
 		12D659B620AC41A000AF9CAB /* TitleScollView&HorizontalCollection */ = {
@@ -183,7 +183,7 @@
 			children = (
 				12C81AD020B312F800AB8E2A /* SegmentPagerStyle1.h */,
 				12C81AD120B312F800AB8E2A /* SegmentPagerStyle1.m */,
-				12D6599820AC3DBF00AF9CAB /* SubViewController */,
+				12D6599820AC3DBF00AF9CAB /* SubViewControllers */,
 			);
 			name = "Each SubTableView Can Pull To Refresh";
 			sourceTree = "<group>";
@@ -193,22 +193,12 @@
 			children = (
 				122C79EF20AE95C200B5FFE6 /* SegmentPagerStyle2.h */,
 				122C79F020AE95C200B5FFE6 /* SegmentPagerStyle2.m */,
-				12E9052B20B7FC8E008E745C /* BaseSubScrollViewController */,
+				12E9052B20B7FC8E008E745C /* SubViewControllers */,
 			);
 			name = "Only Main SuperView Can Pull To Refresh";
 			sourceTree = "<group>";
 		};
-		12E9052B20B7FC8E008E745C /* BaseSubScrollViewController */ = {
-			isa = PBXGroup;
-			children = (
-				12E9057720B80456008E745C /* BaseSubScrollViewControllerStyle2.h */,
-				12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */,
-				12E9052C20B7FCAE008E745C /* SubViewConreollers */,
-			);
-			name = BaseSubScrollViewController;
-			sourceTree = "<group>";
-		};
-		12E9052C20B7FCAE008E745C /* SubViewConreollers */ = {
+		12E9052B20B7FC8E008E745C /* SubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				12E9057D20B804FD008E745C /* TableViewControllerStyle2.h */,
@@ -217,8 +207,18 @@
 				12E9058120B8050A008E745C /* ScrollViewControllerStyle2.m */,
 				12E9057A20B8049F008E745C /* CollectionViewControllerStyle2.h */,
 				12E9057B20B8049F008E745C /* CollectionViewControllerStyle2.m */,
+				12E9052C20B7FCAE008E745C /* BaseSubViewController */,
 			);
-			name = SubViewConreollers;
+			name = SubViewControllers;
+			sourceTree = "<group>";
+		};
+		12E9052C20B7FCAE008E745C /* BaseSubViewController */ = {
+			isa = PBXGroup;
+			children = (
+				12E9057720B80456008E745C /* BaseSubScrollViewControllerStyle2.h */,
+				12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */,
+			);
+			name = BaseSubViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

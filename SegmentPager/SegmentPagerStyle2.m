@@ -55,6 +55,7 @@
     // Do any additional setup after loading the view.
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     topEdgeInset = 200;
     titleFontSize = 25;
     canSuperScrollViewScroll = YES;

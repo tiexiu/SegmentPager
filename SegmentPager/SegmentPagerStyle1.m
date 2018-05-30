@@ -45,7 +45,6 @@
 @property (nonatomic) NSMutableDictionary *leavingDic;
 @property (nonatomic) NSMutableDictionary *enteringDic;
 
-//@property (nonatomic) UIView *statusBackgroundView;
 @end
 
 @implementation SegmentPagerStyle1
@@ -55,9 +54,7 @@
     // Do any additional setup after loading the view.
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
+
     
     self.view.backgroundColor = [UIColor whiteColor];
     pageWidth = self.view.bounds.size.width;
@@ -73,8 +70,10 @@
     [self.titleScrollBackgroundView addSubview:self.titleScroll];
     [self.titleScrollBackgroundView addSubview:self.bannerBackview];
     [self.bannerBackview addSubview:self.banner];
-//    [self.titleScrollBackgroundView addSubview:self.statusBackgroundView];
-//    [self.titleScrollBackgroundView bringSubviewToFront:self.statusBackgroundView];
+    
+    
+   
+    
 }
 #pragma --mark SubScrollViewDidScrollDelegate
 - (void)subScrollViewWillBeginDraggin:(UIScrollView *)scrollView {
@@ -131,12 +130,9 @@
     CGFloat leavingBottom = (flag) ? [[self.leavingDic objectForKey:key] floatValue] : topEdgeInset;
     CGFloat enteringBottom = [[self.enteringDic objectForKey:key] floatValue];
     
-    UIViewController *vc = self.vcArray[index];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"] ) {
-        BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
-        CGFloat contentOffsetY = v.baseScrollView.contentOffset.y;
-        v.baseScrollView.contentOffset = CGPointMake(0, contentOffsetY-enteringBottom+leavingBottom);
-    }
+    BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
+    CGFloat contentOffsetY = vc.baseScrollView.contentOffset.y;
+    vc.baseScrollView.contentOffset = CGPointMake(0, contentOffsetY-enteringBottom+leavingBottom);
 }
 #pragma --mark 监听事件
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
@@ -156,22 +152,18 @@
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
   
     [self.titleScroll updateTitleScrollViewWithIndex:targetIndex];
-    UIViewController *vc = self.vcArray[targetIndex];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"]) {
-        BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
-        scrollingOffsetY = v.baseScrollView.contentOffset.y;
-    }
+    
+    BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[targetIndex];
+    scrollingOffsetY = vc.baseScrollView.contentOffset.y;
 }
 
 
 #pragma --mark TitleSelectedDelegate
 - (void)titleSelected:(NSInteger)index {
     [self.horizontalCollection updatePageWithIndex:index];
-    UIViewController *vc = self.vcArray[index];
-    if ([NSStringFromClass(vc.superclass) isEqualToString:@"BaseSubScrollViewControllerStyle1"]) {
-        BaseSubScrollViewControllerStyle1 *v = (BaseSubScrollViewControllerStyle1 *)vc;
-        scrollingOffsetY = v.baseScrollView.contentOffset.y;
-    }
+
+    BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
+    scrollingOffsetY = vc.baseScrollView.contentOffset.y;
 }
 
 #pragma --mark lazyLoad
@@ -189,7 +181,7 @@
 }
 - (HorizontalCollectionView *)horizontalCollection {
     if (_horizontalCollection == nil) {
-        _horizontalCollection = [[HorizontalCollectionView alloc] initWithFrame:CGRectMake(0, 0, pageWidth, pageHeight)];
+        _horizontalCollection = [[HorizontalCollectionView alloc] initWithFrame:CGRectMake(0, 0, pageWidth, pageHeight- TOP_BAR_HEIGHT)];
         [_horizontalCollection contentCollectionViewWithControllers:self.vcArray index:0];
         _horizontalCollection.horizontalCollectionViewScrollDelegate = self;
         _horizontalCollection.horizontalCellDisplayDelegate = self;
