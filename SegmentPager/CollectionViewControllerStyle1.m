@@ -21,7 +21,6 @@ static NSString *collectionCellID = @"collectionCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.collection addSubview:self.refresh];
     [self.view addSubview:self.collection];
     self.baseScrollView = self.collection;
 }

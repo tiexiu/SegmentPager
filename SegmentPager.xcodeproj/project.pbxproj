@@ -113,14 +113,11 @@
 				12D6597D20AC399100AF9CAB /* AppDelegate.m */,
 				12D6597F20AC399100AF9CAB /* ViewController.h */,
 				12D6598020AC399200AF9CAB /* ViewController.m */,
-				12D6599520AC3C9C00AF9CAB /* PrefixHeader.h */,
-				12D6598520AC399200AF9CAB /* Assets.xcassets */,
-				12D6598A20AC399200AF9CAB /* Info.plist */,
-				12D6598B20AC399200AF9CAB /* main.m */,
 				12E9052920B7FB09008E745C /* Each SubTableView Can Pull To Refresh */,
 				12E9052A20B7FBA3008E745C /* Only Main SuperView Can Pull To Refresh */,
 				12D659B620AC41A000AF9CAB /* TitleScollView&HorizontalCollection */,
 				12D659AE20AC3F8B00AF9CAB /* Rewrite */,
+				12DEE1B420BEAAB40068485C /* Support Files */,
 			);
 			path = SegmentPager;
 			sourceTree = "<group>";
@@ -128,13 +125,13 @@
 		12D6599820AC3DBF00AF9CAB /* SubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				12D659AF20AC3FA500AF9CAB /* BaseSubViewController */,
 				12D5C39D20BD4B930046434E /* TableViewControllerStyle1.h */,
 				12D5C39E20BD4B930046434E /* TableViewControllerStyle1.m */,
 				12D6599F20AC3E3E00AF9CAB /* ScrollViewControllerStyle1.h */,
 				12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */,
 				12D659A220AC3E4900AF9CAB /* CollectionViewControllerStyle1.h */,
 				12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */,
-				12D659AF20AC3FA500AF9CAB /* BaseSubViewController */,
 			);
 			name = SubViewControllers;
 			sourceTree = "<group>";
@@ -178,6 +175,17 @@
 			name = "TitleScollView&HorizontalCollection";
 			sourceTree = "<group>";
 		};
+		12DEE1B420BEAAB40068485C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				12D6599520AC3C9C00AF9CAB /* PrefixHeader.h */,
+				12D6598520AC399200AF9CAB /* Assets.xcassets */,
+				12D6598A20AC399200AF9CAB /* Info.plist */,
+				12D6598B20AC399200AF9CAB /* main.m */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
 		12E9052920B7FB09008E745C /* Each SubTableView Can Pull To Refresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,13 +209,13 @@
 		12E9052B20B7FC8E008E745C /* SubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				12E9052C20B7FCAE008E745C /* BaseSubViewController */,
 				12E9057D20B804FD008E745C /* TableViewControllerStyle2.h */,
 				12E9057E20B804FD008E745C /* TableViewControllerStyle2.m */,
 				12E9058020B8050A008E745C /* ScrollViewControllerStyle2.h */,
 				12E9058120B8050A008E745C /* ScrollViewControllerStyle2.m */,
 				12E9057A20B8049F008E745C /* CollectionViewControllerStyle2.h */,
 				12E9057B20B8049F008E745C /* CollectionViewControllerStyle2.m */,
-				12E9052C20B7FCAE008E745C /* BaseSubViewController */,
 			);
 			name = SubViewControllers;
 			sourceTree = "<group>";

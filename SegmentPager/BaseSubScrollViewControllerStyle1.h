@@ -20,11 +20,9 @@
 {
     @protected
     CGFloat topEdgeInset;
-    CGFloat refreshViewHeight;
 }
 @property (nonatomic,weak) id<SubScrollViewDelegate>subScrollViewDidScrollDelegate;
 @property (nonatomic,strong) UIScrollView *baseScrollView;
-@property (nonatomic) UILabel *refresh;
 
 
 @end
