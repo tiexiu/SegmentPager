@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HitTestScrollView : UIScrollView
-
+@property (nonatomic) UIView *hitView;
 @end

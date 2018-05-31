@@ -144,7 +144,7 @@ static NSInteger const titleFontSize = 25;
 - (void)tapOnBanner {
     [self presentViewController:self.alert animated:NO completion:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.alert dismissViewControllerAnimated:NO completion:nil];
+            [self.alert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
 }

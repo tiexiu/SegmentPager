@@ -7,11 +7,7 @@
 //
 
 #import "GestureRecognizerTableView.h"
-#import "HitTestScrollView.h"
 
-@interface GestureRecognizerTableView()<UIScrollViewDelegate,UIGestureRecognizerDelegate>
-
-@end
 
 @implementation GestureRecognizerTableView
 

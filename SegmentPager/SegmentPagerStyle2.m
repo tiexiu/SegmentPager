@@ -33,6 +33,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 }
 
 @property (nonatomic) UIImageView *banner;
+
 @property (nonatomic) HitTestScrollView *superScrollView;
 @property (nonatomic) HorizontalCollectionView *horizontalCollectionView;
 @property (nonatomic) TitleScrollView *titleScrollView;
@@ -191,7 +192,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 - (void)tapOnBanner:(id)sender {
     [self presentViewController:self.alert animated:NO completion:^{
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.alert dismissViewControllerAnimated:NO completion:nil];
+            [self.alert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
 }
@@ -208,6 +209,7 @@ static CGFloat const refreshControlHeight = 80.0f;
         _superScrollView.bounces = YES;
         _superScrollView.showsVerticalScrollIndicator = NO;
         _superScrollView.showsHorizontalScrollIndicator = NO;
+        _superScrollView.hitView = self.banner;
     }
     return _superScrollView;
 }
