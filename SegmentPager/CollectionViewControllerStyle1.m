@@ -22,8 +22,8 @@ static NSString *collectionCellID = @"collectionCellID";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.collection];
+    [self.collection addSubview:self.refreshControl];
     self.baseScrollView = self.collection;
-    self.baseScrollView.refreshControl = self.refresh;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

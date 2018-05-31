@@ -22,8 +22,8 @@ static NSString *newTableCellID = @"cijladfa";
     // Do any additional setup after loading the view.
     
     [self.view addSubview:self.tableView];
+    [self.tableView addSubview:self.refreshControl];
     self.baseScrollView = self.tableView;
-    self.baseScrollView.refreshControl = self.refresh;
 }
 
 #pragma --mark delegate&dataSource

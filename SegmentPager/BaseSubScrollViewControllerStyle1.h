@@ -23,6 +23,6 @@
 }
 @property (nonatomic,weak) id<SubScrollViewDelegate>subScrollViewDidScrollDelegate;
 @property (nonatomic) UIScrollView *baseScrollView;
-@property (nonatomic) UIRefreshControl *refresh;
+@property (nonatomic) UILabel *refreshControl;
 
 @end

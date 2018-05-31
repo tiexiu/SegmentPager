@@ -17,8 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.scrollView];
+    
+    [self.scrollView addSubview:self.refreshControl];
     self.baseScrollView = self.scrollView;
-    self.baseScrollView.refreshControl = self.refresh;
     [self setupUI];
 }
 

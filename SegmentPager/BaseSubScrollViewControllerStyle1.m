@@ -9,7 +9,9 @@
 #import "BaseSubScrollViewControllerStyle1.h"
 
 @interface BaseSubScrollViewControllerStyle1 ()
-@property (nonatomic) UIAlertController *alert;
+{
+    CGFloat refreshControlHeight;
+}
 @end
 
 @implementation BaseSubScrollViewControllerStyle1
@@ -18,34 +20,11 @@
     if (self = [super init]) {
         self.navigationController.navigationBarHidden = YES;
         topEdgeInset = BANNER_HEIGHT;
+        refreshControlHeight = 50;
     }
     return self;
 }
 
-- (void)refresh:(UIRefreshControl *)sender {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [sender endRefreshing];
-        [self presentViewController:self.alert animated:NO completion:^{
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.alert dismissViewControllerAnimated:NO completion:nil];
-            });
-        }];
-    });
-}
--(UIAlertController *)alert {
-    if (!_alert) {
-        _alert = [UIAlertController alertControllerWithTitle:nil message:@"刷新完成" preferredStyle:UIAlertControllerStyleAlert];
-    }
-    return _alert;
-}
-- (UIRefreshControl *)refresh {
-    if (!_refresh) {
-        _refresh = [[UIRefreshControl alloc] init];
-        _refresh.tintColor = [UIColor redColor];
-        [_refresh addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    }
-    return _refresh;
-}
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     if ([self.subScrollViewDidScrollDelegate respondsToSelector:@selector(subScrollViewWillBeginDraggin:)]) {
@@ -57,6 +36,42 @@
     if ([self.subScrollViewDidScrollDelegate respondsToSelector:@selector(subScrollViewDidScroll:)]) {
         [self.subScrollViewDidScrollDelegate subScrollViewDidScroll:scrollView];
     }
+    
+    if (scrollView.contentOffset.y <= -refreshControlHeight) {
+        if (self.refreshControl.tag == 0) {
+            self.refreshControl.text = @"释放刷新";
+        }
+        self.refreshControl.tag = 1;
+    }else {
+        self.refreshControl.text = @"下拉刷新";
+        self.refreshControl.tag = 0;
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    if (self.refreshControl.tag == 1) {
+        [UIView animateWithDuration:.3 animations:^{
+            self.refreshControl.text = @"正在刷新";
+            scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+refreshControlHeight, 0, 0, 0);
+        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [UIView animateWithDuration:.3 animations:^{
+                self.refreshControl.text = @"下拉刷新";
+                self.refreshControl.tag = 0;
+                scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
+            }];
+        });
+    }
+}
+
+- (UILabel *)refreshControl {
+    if(!_refreshControl) {
+        _refreshControl = [[UILabel alloc] initWithFrame:CGRectMake(0, -refreshControlHeight, CGRectGetWidth(self.view.frame), refreshControlHeight)];
+        _refreshControl.text = @"下拉刷新";
+        _refreshControl.textAlignment = NSTextAlignmentCenter;
+        _refreshControl.tag = 0;
+    }
+    return _refreshControl;
 }
 
 @end
