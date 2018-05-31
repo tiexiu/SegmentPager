@@ -109,8 +109,6 @@
 		12D6597B20AC399100AF9CAB /* SegmentPager */ = {
 			isa = PBXGroup;
 			children = (
-				12D6597C20AC399100AF9CAB /* AppDelegate.h */,
-				12D6597D20AC399100AF9CAB /* AppDelegate.m */,
 				12D6597F20AC399100AF9CAB /* ViewController.h */,
 				12D6598020AC399200AF9CAB /* ViewController.m */,
 				12E9052920B7FB09008E745C /* Each SubTableView Can Pull To Refresh */,
@@ -178,6 +176,8 @@
 		12DEE1B420BEAAB40068485C /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				12D6597C20AC399100AF9CAB /* AppDelegate.h */,
+				12D6597D20AC399100AF9CAB /* AppDelegate.m */,
 				12D6599520AC3C9C00AF9CAB /* PrefixHeader.h */,
 				12D6598520AC399200AF9CAB /* Assets.xcassets */,
 				12D6598A20AC399200AF9CAB /* Info.plist */,
