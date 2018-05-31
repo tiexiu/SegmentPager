@@ -20,6 +20,8 @@
 {
     @protected
     CGFloat topEdgeInset;
+    NSInteger titleHeight;
+
 }
 @property (nonatomic,weak) id<SubScrollViewDelegate>subScrollViewDidScrollDelegate;
 @property (nonatomic) UIScrollView *baseScrollView;

@@ -35,7 +35,7 @@ static NSString *collectionCellID = @"collectionCellID";
 
 #pragma mark -UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 14;
+    return 24;
 }
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -49,7 +49,7 @@ static NSString *collectionCellID = @"collectionCellID";
     cell.backgroundColor = randomColor;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+    return 1;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"选中第%ld个cell",indexPath.row);
@@ -64,7 +64,7 @@ static NSString *collectionCellID = @"collectionCellID";
         _collection.showsHorizontalScrollIndicator = NO;
         [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellID];
         _collection.bounces = YES;
-        _collection.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0 );
+        _collection.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0 );
         _collection.backgroundColor = [UIColor whiteColor];
         _collection.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     }

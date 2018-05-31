@@ -15,17 +15,13 @@
 #import "UIView+Layer.h"
 #import "HitTestView.h"
 
-
+static CGFloat const topEdgeInset = 200.0f;
+static NSInteger const titleFontSize = 25;
 @interface SegmentPagerStyle1 ()<SubScrollViewDelegate,HorizontalCollectionViewDisplayCellDelegate,HorizontalCollectionViewScrollDelegate,TitleSelectedDelegate>
 {
-    CGFloat titleFontSize;
     CGFloat titleScrollHeight;
-    
-    // 顶部视图的高度
-    CGFloat topEdgeInset;
     // 获取subSvrollView的滑动方向
     CGFloat scrollingOffsetY;
-    
 }
 @property (nonatomic) UIView *bannerBackview;
 @property (nonatomic) UIView *banner;
@@ -40,25 +36,34 @@
 @property (nonatomic) CollectionViewControllerStyle1 *collection;
 @property (nonatomic) ScrollViewControllerStyle1 *scroller;
 
+@property (nonatomic) UIAlertController *alert;
+
+// 上次离开某页面时title的位置
 @property (nonatomic) NSMutableDictionary *leavingDic;
+//  准备进入某页面是title的位置
 @property (nonatomic) NSMutableDictionary *enteringDic;
 
 @end
 
 @implementation SegmentPagerStyle1
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"Style1";
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
+
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
-    topEdgeInset = BANNER_HEIGHT;
-    titleFontSize = SCROLLTITLE_FONTSIZE;
     scrollingOffsetY = -topEdgeInset;
     titleScrollHeight = (ceil)([UIFont systemFontOfSize:titleFontSize].lineHeight);
-    
+
+    self.titleArray = @[@"tableView",@"collectionView",@"scrollView"];
+    self.vcArray = @[self.table,self.collection,self.scroller];
+
     [self.view addSubview:self.horizontalCollection];
     [self.view addSubview:self.titleScrollBackgroundView];
     [self.view bringSubviewToFront:self.titleScrollBackgroundView];
@@ -66,12 +71,7 @@
     [self.titleScrollBackgroundView addSubview:self.bannerBackview];
     [self.bannerBackview addSubview:self.banner];
 }
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-}
+
 #pragma --mark SubScrollViewDidScrollDelegate
 - (void)subScrollViewWillBeginDraggin:(UIScrollView *)scrollView {
     scrollingOffsetY = scrollView.contentOffset.y;
@@ -85,8 +85,8 @@
     CGFloat offsetY = scrollView.contentOffset.y;  // [-200~0]
     if (offsetY > -titleScrollHeight) {
         offsetY = -titleScrollHeight;
-    }else if (offsetY < -topEdgeInset) {
-        offsetY = -topEdgeInset;
+    }else if (offsetY < -topEdgeInset-titleScrollHeight) {
+        offsetY = -topEdgeInset-titleScrollHeight;
     }
        
     CGFloat scrollerYInView = [scrollView convertRect:scrollView.frame toView:self.view].origin.y;
@@ -100,10 +100,10 @@
 //            NSLog(@"scroll头在上方");
         }
     }else if (scrollDirection < 0) {      // 上滑
-        if (scrollView.contentOffset.y > -topEdgeInset) {
+        if (scrollView.contentOffset.y > -topEdgeInset-titleScrollHeight) {
             self.titleScroll.top = (self.titleScroll.top + scrollDirection ) < 0 ? 0 : (self.titleScroll.top + scrollDirection);
         }else {     // scrollView在title下方进行弹性滑动
-            self.titleScroll.bottom = topEdgeInset;
+            self.titleScroll.bottom = topEdgeInset+titleScrollHeight;
         }
     }
     scrollingOffsetY = scrollView.contentOffset.y;
@@ -124,7 +124,7 @@
     [self.enteringDic setObject:num forKey:key];
     
     BOOL flag = [[self.leavingDic allKeys] containsObject:key];
-    CGFloat leavingBottom = (flag) ? [[self.leavingDic objectForKey:key] floatValue] : topEdgeInset;
+    CGFloat leavingBottom = (flag) ? [[self.leavingDic objectForKey:key] floatValue] : topEdgeInset+titleScrollHeight;
     CGFloat enteringBottom = [[self.enteringDic objectForKey:key] floatValue];
     
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
@@ -137,12 +137,16 @@
     CGFloat titleBottom = CGRectGetMaxY(titleRect);
     CGFloat titleHeight = CGRectGetHeight(titleRect);
 
-    self.bannerBackview.frame = CGRectMake(0, titleBottom-topEdgeInset, CGRectGetWidth(self.view.frame), topEdgeInset-titleHeight);
-    self.banner.frame = CGRectMake(0,topEdgeInset -titleBottom, CGRectGetWidth(self.view.frame), topEdgeInset-titleHeight);
+    self.bannerBackview.frame = CGRectMake(0, titleBottom-topEdgeInset-titleHeight, CGRectGetWidth(self.view.frame), topEdgeInset);
+    self.banner.frame = CGRectMake(0,topEdgeInset+titleHeight -titleBottom, CGRectGetWidth(self.view.frame), topEdgeInset);
 }
 #pragma --mark bannerTapAction
-- (void)tapOnImage {
-    NSLog(@"点击图片");
+- (void)tapOnBanner {
+    [self presentViewController:self.alert animated:NO completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.alert dismissViewControllerAnimated:NO completion:nil];
+        });
+    }];
 }
 #pragma --mark HorizontalCollectionViewScrollDelegate
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
@@ -152,8 +156,6 @@
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[targetIndex];
     scrollingOffsetY = vc.baseScrollView.contentOffset.y;
 }
-
-
 #pragma --mark TitleSelectedDelegate
 - (void)titleSelected:(NSInteger)index {
     [self.horizontalCollection updatePageWithIndex:index];
@@ -161,12 +163,11 @@
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
     scrollingOffsetY = vc.baseScrollView.contentOffset.y;
 }
-
 #pragma --mark lazyLoad
 - (TitleScrollView *)titleScroll {
     if (_titleScroll == nil) {
         _titleScroll = [[TitleScrollView alloc] initWithFrame:(CGRect){
-            CGPointMake(0, topEdgeInset-titleScrollHeight) ,
+            CGPointMake(0, topEdgeInset) ,
             CGSizeMake(CGRectGetWidth(self.view.frame), titleScrollHeight)
         }];
         [_titleScroll titleScrollViewWithTitleArray:self.titleArray font:[UIFont systemFontOfSize:titleFontSize] initialIndex:0];
@@ -193,42 +194,33 @@
     }
     return _titleScrollBackgroundView;
 }
-- (NSArray *)titleArray {
-    if (_titleArray == nil) {
-        _titleArray = [NSArray arrayWithObjects:@"tableView",@"collectionView",@"scrollView", nil];
-    }
-    return _titleArray;
-}
 
-- (NSArray *)vcArray {
-    if (!_vcArray) {
-        _vcArray = [[NSMutableArray alloc] init];
-        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:self.titleArray.count];
-        [array addObjectsFromArray:@[self.table,self.collection,self.scroller]];
-        _vcArray = array;
-    }
-    return _vcArray;
-}
 - (UIView *)bannerBackview {
     if (!_bannerBackview) {
-        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, CGRectGetWidth(self.view.frame), topEdgeInset-self.titleScroll.height)];
+        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, CGRectGetWidth(self.view.frame), topEdgeInset)];
         _bannerBackview.clipsToBounds = YES;
     }
     return _bannerBackview;
 }
 - (UIView *)banner {
     if (!_banner) {
-        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), topEdgeInset-self.titleScroll.height)];
+        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), topEdgeInset)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:_banner.bounds];
         imageView.image = [UIImage imageNamed:@"banner1"];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
-        UITapGestureRecognizer *p = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnImage)];
+        UITapGestureRecognizer *p = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBanner)];
         [_banner addGestureRecognizer:p];
         [_banner addSubview:imageView];
     }
     return _banner;
 }
 
+- (UIAlertController *)alert {
+    if (!_alert) {
+        _alert = [UIAlertController alertControllerWithTitle:nil message:@"点击事件" preferredStyle:UIAlertControllerStyleAlert];
+    }
+    return _alert;
+}
 - (TableViewControllerStyle1 *)table {
     if (!_table) {
         _table = [[TableViewControllerStyle1 alloc] init];
@@ -265,16 +257,6 @@
     }
     return _enteringDic;
 }
-//- (UIView *)statusBackgroundView {
-//    if (!_statusBackgroundView) {
-//        CGRect frame = self.navigationController.navigationBar.frame;
-//        _statusBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, -20, frame.size.width, 20)];
-//        _statusBackgroundView.backgroundColor = [UIColor whiteColor];
-//        _statusBackgroundView.alpha = 0;
-//        _statusBackgroundView.userInteractionEnabled = NO;
-//    }
-//    return _statusBackgroundView;
-//}
 
 
 @end

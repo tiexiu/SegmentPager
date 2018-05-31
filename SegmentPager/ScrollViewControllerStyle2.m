@@ -24,18 +24,6 @@
     [self setupUI];
 }
 
-- (GestureRecognizerScrollView *)scrollView {
-    if (!_scrollView) {
-        _scrollView = [[GestureRecognizerScrollView alloc] init];
-        _scrollView.translatesAutoresizingMaskIntoConstraints = NO;
-        _scrollView.bounces = NO;
-        _scrollView.delegate = self;
-        _scrollView.backgroundColor = [UIColor whiteColor];
-    }
-    return _scrollView;
-}
-
-
 - (void)setupUI {
     
     NSDictionary *scrollViewDic = @{@"scrollView" : self.scrollView};
@@ -79,6 +67,17 @@
     [backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:hVFL3 options:0 metrics:metric views:@{@"view4":view4}]];
     [backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:vVFL1 options:0 metrics:metric views:@{@"view1":view1,@"view2":view2,@"view4":view4}]];
     [backgroundView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:vVFL2 options:0 metrics:metric views:@{@"view1":view1,@"view3":view3,@"view4":view4}]];
+}
+
+- (GestureRecognizerScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[GestureRecognizerScrollView alloc] init];
+        _scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+        _scrollView.bounces = NO;
+        _scrollView.delegate = self;
+        _scrollView.backgroundColor = [UIColor whiteColor];
+    }
+    return _scrollView;
 }
 
 

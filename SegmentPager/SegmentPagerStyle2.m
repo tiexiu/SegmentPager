@@ -16,68 +16,60 @@
 #import "ScrollViewControllerStyle2.h"
 #import "CollectionViewControllerStyle2.h"
 
+static NSInteger const titleFontSize = 25;
+static CGFloat const topEdgeInset = 200.0f;
+static CGFloat const refreshControlHeight = 80.0f;
+
 @interface SegmentPagerStyle2 ()<UIScrollViewDelegate,SubScrollViewDelegate,HorizontalCollectionViewScrollDelegate,TitleSelectedDelegate>
 {
-    // segment标题字体
-    CGFloat titleFontSize;
-    // 顶部视图的高度
-    CGFloat topEdgeInset;
     // 设置superScrollView是否可以滑动
     BOOL canSuperScrollViewScroll;
     // 获取subSvrollView的滑动方向
     CGFloat subScrollingOffsetY;
-        
-    // 这个变量用来获取和保存【单次拖拽过程中】titleY最小即最靠近屏幕上方的值
+    // 获取和保存【单次拖拽过程中】titleY最小即最靠近屏幕上方的值
     CGFloat maxSuperScrollYToView;
-    // 这个变量用来获取和保存【单次拖拽过程中】subScrollView最靠近屏幕底部的值
+    // 获取和保存【单次拖拽过程中】subScrollView最靠近屏幕底部的值
     CGFloat minSubScrollY;
-    
-    CGFloat refreshControlHeight;
-
-    NSArray *titleArray;
-    NSArray *vcArray;
 }
 
-// 头部视图
 @property (nonatomic) UIImageView *banner;
-//// 装载横滚collectionView
 @property (nonatomic) HitTestScrollView *superScrollView;
-//// 装载subViewControllers
 @property (nonatomic) HorizontalCollectionView *horizontalCollectionView;
-//// 装载标题栏
 @property (nonatomic) TitleScrollView *titleScrollView;
+@property (nonatomic) NSArray *titleArray;
 
+@property (nonatomic) NSArray *vcArray;
 @property (nonatomic) CollectionViewControllerStyle2 *collection;
 @property (nonatomic) TableViewControllerStyle2 *table;
 @property (nonatomic) ScrollViewControllerStyle2 *scroller;
 
-// 自定义刷新控件
+@property (nonatomic) UIAlertController *alert;
+
+// 刷新控件
 @property (nonatomic) UILabel *refreshControl;
 @end
 
 @implementation SegmentPagerStyle2
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    self.title = @"Style2";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 
-    topEdgeInset = 200;
-    titleFontSize = 25;
     canSuperScrollViewScroll = YES;
-    refreshControlHeight = 80;
-    titleArray = @[@"tableView",@"collectionView",@"scrollView"];
-    vcArray = @[self.table,self.collection,self.scroller];
+    self.titleArray = @[@"tableView",@"collectionView",@"scrollView"];
+    self.vcArray = @[self.table,self.collection,self.scroller];
 
     [self.view addSubview:self.banner];
     [self.view addSubview:self.superScrollView];
     [self.superScrollView addSubview:self.titleScrollView];
     [self.superScrollView addSubview:self.horizontalCollectionView];
     [self.superScrollView addSubview:self.refreshControl];
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 #pragma --mark SubScrollViewDidScrollDelegate
@@ -175,12 +167,12 @@
 #pragma --mark HorizontalCollectionViewScrollDelegate
 // 横滚时subScrollView不可以滚动
 - (void)horizontalCollectionViewWillBegingDragging:(UIScrollView *)scrollView atIndex:(NSInteger)index{
-    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)vcArray[index];
+    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)self.vcArray[index];
     vc.baseScrollView.scrollEnabled = NO;
     
 }
 - (void)horizontalCollectionViewDidEndDecelerating:(UIScrollView *)scrollView atIndex:(NSInteger)index{
-    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)vcArray[index];
+    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)self.vcArray[index];
     vc.baseScrollView.scrollEnabled = YES;
 }
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
@@ -194,6 +186,14 @@
     [self.horizontalCollectionView updatePageWithIndex:index];
     // 切换到新的控制器，默认superScroll可以滑动
     canSuperScrollViewScroll = YES;
+}
+#pragma --mark banner tap action
+- (void)tapOnBanner:(id)sender {
+    [self presentViewController:self.alert animated:NO completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.alert dismissViewControllerAnimated:NO completion:nil];
+        });
+    }];
 }
 
 #pragma --mark LazyLoad
@@ -216,7 +216,7 @@
     if (_titleScrollView == nil) {
         UIFont *titleFont = [UIFont systemFontOfSize:titleFontSize];
         _titleScrollView = [[TitleScrollView alloc] initWithFrame:(CGRect){CGPointMake(0, 0),CGSizeMake(CGRectGetWidth(self.superScrollView.frame), ceil(titleFont.lineHeight))}];
-        [_titleScrollView titleScrollViewWithTitleArray:titleArray font:titleFont initialIndex:0];
+        [_titleScrollView titleScrollViewWithTitleArray:self.titleArray font:titleFont initialIndex:0];
         _titleScrollView.titleSelectedDelegate = self;
     }
     return _titleScrollView;
@@ -229,7 +229,7 @@
         CGPoint collectionViewOrgin = CGPointMake(0, CGRectGetMaxY(self.titleScrollView.frame));
         CGSize collectionViewSize = CGSizeMake(collectionViewWidth, collectionViewHeight);
         _horizontalCollectionView = [[HorizontalCollectionView alloc] initWithFrame:(CGRect){collectionViewOrgin,collectionViewSize}];
-        [_horizontalCollectionView contentCollectionViewWithControllers:vcArray index:0];
+        [_horizontalCollectionView contentCollectionViewWithControllers:self.vcArray index:0];
         _horizontalCollectionView.horizontalCollectionViewScrollDelegate = self;
     }
     return _horizontalCollectionView;
@@ -241,8 +241,17 @@
         _banner = [[UIImageView alloc] initWithFrame:bannerFrame];
         _banner.image = [UIImage imageNamed:@"banner1"];
         _banner.contentMode = UIViewContentModeScaleAspectFill;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBanner:)];
+        [_banner addGestureRecognizer:tap];
     }
     return _banner;
+}
+
+- (UIAlertController *)alert {
+    if (!_alert) {
+        _alert = [UIAlertController alertControllerWithTitle:nil message:@"点击事件" preferredStyle:UIAlertControllerStyleAlert];
+    }
+    return _alert;
 }
 
 - (TableViewControllerStyle2 *)table {

@@ -8,19 +8,15 @@
 
 #import "BaseSubScrollViewControllerStyle1.h"
 
-@interface BaseSubScrollViewControllerStyle1 ()
-{
-    CGFloat refreshControlHeight;
-}
-@end
+static CGFloat const refreshControlHeight = 50.f;
 
 @implementation BaseSubScrollViewControllerStyle1
 
 - (instancetype)init {
     if (self = [super init]) {
         self.navigationController.navigationBarHidden = YES;
-        topEdgeInset = BANNER_HEIGHT;
-        refreshControlHeight = 50;
+        topEdgeInset = 200.f;
+        titleHeight = [UIFont systemFontOfSize:25].lineHeight;
     }
     return self;
 }
@@ -37,7 +33,7 @@
         [self.subScrollViewDidScrollDelegate subScrollViewDidScroll:scrollView];
     }
     
-    if (scrollView.contentOffset.y <= -refreshControlHeight) {
+    if (scrollView.contentOffset.y <= -(refreshControlHeight+topEdgeInset+titleHeight)) {
         if (self.refreshControl.tag == 0) {
             self.refreshControl.text = @"释放刷新";
         }
@@ -52,13 +48,13 @@
     if (self.refreshControl.tag == 1) {
         [UIView animateWithDuration:.3 animations:^{
             self.refreshControl.text = @"正在刷新";
-            scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+refreshControlHeight, 0, 0, 0);
+            scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight+refreshControlHeight, 0, 0, 0);
         }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:.3 animations:^{
                 self.refreshControl.text = @"下拉刷新";
                 self.refreshControl.tag = 0;
-                scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
+                scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0);
             }];
         });
     }

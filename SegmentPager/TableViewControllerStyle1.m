@@ -9,7 +9,9 @@
 #import "TableViewControllerStyle1.h"
 
 
-static NSString *newTableCellID = @"cijladfa";
+static NSString *const newTableCellID = @"cij@lCVaJdAfa";
+static CGFloat const rowHeight = 44.0f;
+
 @interface TableViewControllerStyle1 ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic) UITableView *tableView;
 
@@ -53,10 +55,10 @@ static NSString *newTableCellID = @"cijladfa";
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.rowHeight = 44;
+        _tableView.rowHeight = rowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0 );
+        _tableView.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0 );
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newTableCellID];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

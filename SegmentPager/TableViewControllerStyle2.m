@@ -9,7 +9,8 @@
 #import "TableViewControllerStyle2.h"
 #import "GestureRecognizerTableView.h"
 
-static NSString *tableCellStyle2ID = @"TableCellIDStyle2";
+static NSString *const tableCellStyle2ID = @"TableCellIDStyle2";
+static CGFloat const rowHeight = 44.0f;
 
 @interface TableViewControllerStyle2 ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -25,7 +26,6 @@ static NSString *tableCellStyle2ID = @"TableCellIDStyle2";
     // Do any additional setup after loading the view.
     [self.view addSubview:self.tableView];
     self.baseScrollView = self.tableView;
-    arrayCount = 15;
 }
 
 
@@ -34,7 +34,7 @@ static NSString *tableCellStyle2ID = @"TableCellIDStyle2";
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return arrayCount+1;
+    return 20;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tableCellStyle2ID];
@@ -45,20 +45,14 @@ static NSString *tableCellStyle2ID = @"TableCellIDStyle2";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == arrayCount) {
-        cell.textLabel.text = @"点击加载更多";
-    }else {
-        cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
-    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == arrayCount) {
         
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         cell.textLabel.text = @"正在加载...";
-        arrayCount += 2;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [tableView reloadData];
             cell.textLabel.text = @"点击加载更多...";
         });
     }else {
@@ -71,7 +65,7 @@ static NSString *tableCellStyle2ID = @"TableCellIDStyle2";
         _tableView = [[GestureRecognizerTableView alloc] initWithFrame:CGRectMake(0,0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.rowHeight = 44;
+        _tableView.rowHeight = rowHeight;
         _tableView.bounces = NO;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

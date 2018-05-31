@@ -10,9 +10,7 @@
 
 @implementation HitTestScrollView
 
-/*
- 点击穿透，点击事件可以穿透superScrollView，superScrollView下方的banner可以响应点击事件
-*/
+// 触摸穿透
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     
     UIView *hitView = [super hitTest:point withEvent:event];

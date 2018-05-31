@@ -12,24 +12,21 @@
 
 @implementation ViewController
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.title = @"SegmentPager";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     for (int i = 0; i < 2; i ++) {
-        NSArray *titleArray = [NSArray arrayWithObjects:
-                               @"Each SubTableView Can Pull To Refresh",
-                               @"Only Main SuperView Can Pull To Refresh",
-                               nil];
+        NSArray *titleArray = @[@"Each SubTableView Can Pull To Refresh",@"Only Main SuperView Can Pull To Refresh"];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
-        [button setFrame:CGRectMake(0, i*(40+20)+100, self.view.bounds.size.width, 40)];
+        [button setFrame:CGRectMake(0, i*(40+20)+60, self.view.bounds.size.width, 40)];
         [button setTitle:titleArray[i] forState:UIControlStateNormal];
         button.titleLabel.font = [UIFont systemFontOfSize:20];
         button.tag = i;
         [button addTarget:self action:@selector(push:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
-    
 }
 
 - (void)push:(UIButton *)button {
