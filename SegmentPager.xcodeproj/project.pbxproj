@@ -22,7 +22,6 @@
 		12D659A120AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A020AC3E3E00AF9CAB /* ScrollViewControllerStyle1.m */; };
 		12D659A420AC3E4900AF9CAB /* CollectionViewControllerStyle1.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */; };
 		12D659AA20AC3F0900AF9CAB /* GestureRecognizerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659A920AC3F0900AF9CAB /* GestureRecognizerScrollView.m */; };
-		12D659B220AC40D500AF9CAB /* HitTestScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659B020AC40D500AF9CAB /* HitTestScrollView.m */; };
 		12D659B520AC418E00AF9CAB /* HorizontalCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D659B420AC418D00AF9CAB /* HorizontalCollectionView.m */; };
 		12E9052820B7BB51008E745C /* HitTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9052720B7BB51008E745C /* HitTestView.m */; };
 		12E9057920B80456008E745C /* BaseSubScrollViewControllerStyle2.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9057820B80456008E745C /* BaseSubScrollViewControllerStyle2.m */; };
@@ -63,8 +62,6 @@
 		12D659A320AC3E4900AF9CAB /* CollectionViewControllerStyle1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewControllerStyle1.m; sourceTree = "<group>"; };
 		12D659A820AC3F0900AF9CAB /* GestureRecognizerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GestureRecognizerScrollView.h; sourceTree = "<group>"; };
 		12D659A920AC3F0900AF9CAB /* GestureRecognizerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GestureRecognizerScrollView.m; sourceTree = "<group>"; };
-		12D659B020AC40D500AF9CAB /* HitTestScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitTestScrollView.m; sourceTree = "<group>"; };
-		12D659B120AC40D500AF9CAB /* HitTestScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HitTestScrollView.h; sourceTree = "<group>"; };
 		12D659B320AC418D00AF9CAB /* HorizontalCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HorizontalCollectionView.h; sourceTree = "<group>"; };
 		12D659B420AC418D00AF9CAB /* HorizontalCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HorizontalCollectionView.m; sourceTree = "<group>"; };
 		12E9052620B7BB51008E745C /* HitTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HitTestView.h; sourceTree = "<group>"; };
@@ -147,8 +144,6 @@
 				1280203A20ADA93100CF6487 /* GestureRecognizerCollectionView.m */,
 				12E9052620B7BB51008E745C /* HitTestView.h */,
 				12E9052720B7BB51008E745C /* HitTestView.m */,
-				12D659B120AC40D500AF9CAB /* HitTestScrollView.h */,
-				12D659B020AC40D500AF9CAB /* HitTestScrollView.m */,
 			);
 			name = Rewrite;
 			sourceTree = "<group>";
@@ -314,7 +309,6 @@
 				12D5C39C20BD3EE70046434E /* UIView+Layer.m in Sources */,
 				122C79F120AE95C200B5FFE6 /* SegmentPagerStyle2.m in Sources */,
 				12E9058220B8050A008E745C /* ScrollViewControllerStyle2.m in Sources */,
-				12D659B220AC40D500AF9CAB /* HitTestScrollView.m in Sources */,
 				12D659B520AC418E00AF9CAB /* HorizontalCollectionView.m in Sources */,
 				1230D86C20AC4EBD00C48E24 /* TitleScrollView.m in Sources */,
 				12D659AA20AC3F0900AF9CAB /* GestureRecognizerScrollView.m in Sources */,

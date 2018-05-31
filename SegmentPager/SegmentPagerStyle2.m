@@ -7,10 +7,8 @@
 //
 
 #import "SegmentPagerStyle2.h"
-#import "HitTestScrollView.h"
 #import "TitleScrollView.h"
 #import "HorizontalCollectionView.h"
-
 #import "BaseSubScrollViewControllerStyle2.h"
 #import "TableViewControllerStyle2.h"
 #import "ScrollViewControllerStyle2.h"
@@ -34,7 +32,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 
 @property (nonatomic) UIImageView *banner;
 
-@property (nonatomic) HitTestScrollView *superScrollView;
+@property (nonatomic) UIScrollView *superScrollView;
 @property (nonatomic) HorizontalCollectionView *horizontalCollectionView;
 @property (nonatomic) TitleScrollView *titleScrollView;
 @property (nonatomic) NSArray *titleArray;
@@ -43,8 +41,6 @@ static CGFloat const refreshControlHeight = 80.0f;
 @property (nonatomic) CollectionViewControllerStyle2 *collection;
 @property (nonatomic) TableViewControllerStyle2 *table;
 @property (nonatomic) ScrollViewControllerStyle2 *scroller;
-
-@property (nonatomic) UIAlertController *alert;
 
 // 刷新控件
 @property (nonatomic) UILabel *refreshControl;
@@ -66,8 +62,8 @@ static CGFloat const refreshControlHeight = 80.0f;
     self.titleArray = @[@"tableView",@"collectionView",@"scrollView"];
     self.vcArray = @[self.table,self.collection,self.scroller];
 
-    [self.view addSubview:self.banner];
     [self.view addSubview:self.superScrollView];
+    [self.superScrollView addSubview:self.banner];
     [self.superScrollView addSubview:self.titleScrollView];
     [self.superScrollView addSubview:self.horizontalCollectionView];
     [self.superScrollView addSubview:self.refreshControl];
@@ -136,8 +132,8 @@ static CGFloat const refreshControlHeight = 80.0f;
     if (scrollView.contentOffset.y >= 0) {
         [scrollView setContentOffset:CGPointZero];
     }
-    // 头视图跟随弹簧效果移动
-    CGFloat bannerY = -(topEdgeInset+scrollView.contentOffset.y) > 0 ? -(topEdgeInset+scrollView.contentOffset.y) : 0;
+
+    CGFloat bannerY = scrollView.contentOffset.y > -topEdgeInset ? scrollView.contentOffset.y : -topEdgeInset ;
     self.banner.frame = (CGRect){CGPointMake(0,bannerY),self.banner.bounds.size};
     
     if (scrollView.contentOffset.y <= -(topEdgeInset + refreshControlHeight)) {
@@ -189,19 +185,20 @@ static CGFloat const refreshControlHeight = 80.0f;
     canSuperScrollViewScroll = YES;
 }
 #pragma --mark banner tap action
-- (void)tapOnBanner:(id)sender {
-    [self presentViewController:self.alert animated:NO completion:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.alert dismissViewControllerAnimated:YES completion:nil];
+- (void)tapOnBanner {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"点击头图" preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alert animated:NO completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
 }
 
 #pragma --mark LazyLoad
-- (HitTestScrollView *)superScrollView {
+- (UIScrollView *)superScrollView {
     if (_superScrollView == nil) {
         CGRect superScrollViewFrame = CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame));
-        _superScrollView = [[HitTestScrollView alloc] initWithFrame:superScrollViewFrame];
+        _superScrollView = [[UIScrollView alloc] initWithFrame:superScrollViewFrame];
         _superScrollView.contentSize = superScrollViewFrame.size;
         _superScrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
         _superScrollView.contentOffset = CGPointMake(0,-topEdgeInset);
@@ -209,7 +206,6 @@ static CGFloat const refreshControlHeight = 80.0f;
         _superScrollView.bounces = YES;
         _superScrollView.showsVerticalScrollIndicator = NO;
         _superScrollView.showsHorizontalScrollIndicator = NO;
-        _superScrollView.hitView = self.banner;
     }
     return _superScrollView;
 }
@@ -237,23 +233,21 @@ static CGFloat const refreshControlHeight = 80.0f;
     return _horizontalCollectionView;
 }
 
+
 - (UIImageView *)banner {
     if (_banner == nil) {
-        CGRect bannerFrame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), topEdgeInset);
+        CGRect bannerFrame = CGRectMake(0, -topEdgeInset, CGRectGetWidth(self.view.frame), topEdgeInset);
         _banner = [[UIImageView alloc] initWithFrame:bannerFrame];
+        _banner.userInteractionEnabled = YES;
         _banner.image = [UIImage imageNamed:@"banner1"];
         _banner.contentMode = UIViewContentModeScaleAspectFill;
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnBanner:)];
-        [_banner addGestureRecognizer:tap];
+        
+        UIButton *b = [UIButton buttonWithType:UIButtonTypeSystem];
+        b.frame = CGRectMake(0, 0, _banner.bounds.size.width, _banner.bounds.size.height);
+        [b addTarget:self action:@selector(tapOnBanner) forControlEvents:UIControlEventTouchUpInside];
+        [_banner addSubview:b];
     }
     return _banner;
-}
-
-- (UIAlertController *)alert {
-    if (!_alert) {
-        _alert = [UIAlertController alertControllerWithTitle:nil message:@"点击事件" preferredStyle:UIAlertControllerStyleAlert];
-    }
-    return _alert;
 }
 
 - (TableViewControllerStyle2 *)table {
@@ -289,5 +283,7 @@ static CGFloat const refreshControlHeight = 80.0f;
     }
     return _refreshControl;
 }
+
+
 
 @end

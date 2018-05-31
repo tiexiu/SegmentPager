@@ -142,11 +142,13 @@ static NSInteger const titleFontSize = 25;
 }
 #pragma --mark bannerTapAction
 - (void)tapOnBanner {
-    [self presentViewController:self.alert animated:NO completion:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.alert dismissViewControllerAnimated:YES completion:nil];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"点击头图" preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alert animated:NO completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
         });
     }];
+
 }
 #pragma --mark HorizontalCollectionViewScrollDelegate
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
@@ -215,12 +217,6 @@ static NSInteger const titleFontSize = 25;
     return _banner;
 }
 
-- (UIAlertController *)alert {
-    if (!_alert) {
-        _alert = [UIAlertController alertControllerWithTitle:nil message:@"点击事件" preferredStyle:UIAlertControllerStyleAlert];
-    }
-    return _alert;
-}
 - (TableViewControllerStyle1 *)table {
     if (!_table) {
         _table = [[TableViewControllerStyle1 alloc] init];
