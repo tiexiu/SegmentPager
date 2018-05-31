@@ -22,7 +22,7 @@
     CGFloat topEdgeInset;
 }
 @property (nonatomic,weak) id<SubScrollViewDelegate>subScrollViewDidScrollDelegate;
-@property (nonatomic,strong) UIScrollView *baseScrollView;
-
+@property (nonatomic) UIScrollView *baseScrollView;
+@property (nonatomic) UIRefreshControl *refresh;
 
 @end

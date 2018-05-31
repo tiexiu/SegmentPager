@@ -14,11 +14,11 @@
 
 @implementation ScrollViewControllerStyle1
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.scrollView];
     self.baseScrollView = self.scrollView;
+    self.baseScrollView.refreshControl = self.refresh;
     [self setupUI];
 }
 

@@ -23,8 +23,8 @@ static NSString *newTableCellID = @"cijladfa";
     
     [self.view addSubview:self.tableView];
     self.baseScrollView = self.tableView;
+    self.baseScrollView.refreshControl = self.refresh;
 }
-
 
 #pragma --mark delegate&dataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
