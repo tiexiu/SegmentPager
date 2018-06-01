@@ -14,7 +14,7 @@
 #import "ScrollViewControllerStyle2.h"
 #import "CollectionViewControllerStyle2.h"
 
-static NSInteger const titleScrollHeight = 40.0f;
+static CGFloat const titleScrollHeight = 40.0f;
 static CGFloat const bannerHeight = 200.0f;
 static CGFloat const refreshControlHeight = 80.0f;
 
@@ -105,7 +105,6 @@ static CGFloat const refreshControlHeight = 80.0f;
             }
         }
     }
-    
     // 获取单次拖拽过程中superScrollView.contentOffset.y的极限值
     if (maxSuperScrollYToView > currentSuperScrollViewYToView && scrollView.contentOffset.y >= 0) {
         maxSuperScrollYToView = currentSuperScrollViewYToView;

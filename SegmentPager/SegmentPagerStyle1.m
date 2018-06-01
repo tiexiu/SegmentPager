@@ -128,25 +128,6 @@ static CGFloat const sumBannerTitleHeight = 200.0f + 40.0f;
     CGFloat contentOffsetY = vc.baseScrollView.contentOffset.y;
     vc.baseScrollView.contentOffset = CGPointMake(0, contentOffsetY-enteringBottom+leavingBottom);
 }
-#pragma --mark 监听事件
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    CGRect titleRect = [(NSValue *)[change objectForKey:@"new"] CGRectValue];
-    CGFloat titleBottom = CGRectGetMaxY(titleRect);
-    CGFloat titleHeight = CGRectGetHeight(titleRect);
-
-    self.bannerBackview.frame = CGRectMake(0, titleBottom-bannerHeight-titleHeight, CGRectGetWidth(self.view.frame), bannerHeight);
-    self.banner.frame = CGRectMake(0,bannerHeight+titleHeight -titleBottom, CGRectGetWidth(self.view.frame), bannerHeight);
-}
-#pragma --mark bannerTapAction
-- (void)tapOnBanner {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"点击头图" preferredStyle:UIAlertControllerStyleAlert];
-    [self presentViewController:alert animated:NO completion:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [alert dismissViewControllerAnimated:YES completion:nil];
-        });
-    }];
-
-}
 #pragma --mark HorizontalCollectionViewScrollDelegate
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
   
@@ -161,6 +142,25 @@ static CGFloat const sumBannerTitleHeight = 200.0f + 40.0f;
 
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
     scrollingOffsetY = vc.baseScrollView.contentOffset.y;
+    
+}
+#pragma --mark kvo
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    CGRect titleRect = [(NSValue *)[change objectForKey:@"new"] CGRectValue];
+    CGFloat titleBottom = CGRectGetMaxY(titleRect);
+    CGFloat titleHeight = CGRectGetHeight(titleRect);
+    
+    self.bannerBackview.frame = CGRectMake(0, titleBottom-bannerHeight-titleHeight, CGRectGetWidth(self.view.frame), bannerHeight);
+    self.banner.frame = CGRectMake(0,bannerHeight+titleHeight -titleBottom, CGRectGetWidth(self.view.frame), bannerHeight);
+}
+#pragma --mark bannerTapAction
+- (void)tapOnBanner {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"点击头图" preferredStyle:UIAlertControllerStyleAlert];
+    [self presentViewController:alert animated:NO completion:^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [alert dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
     
 }
 #pragma --mark lazyLoad
