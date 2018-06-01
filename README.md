@@ -5,7 +5,7 @@
 下面两种实现方式用的是都是同一套标题栏和横滚视图，实现了比较基础的功能。<br>
 横滚标题栏是用UIScrollView实现；下部横滚视图用UICollectionView装载。<br>
 
-## STYLE 1:Each SubTableView Can Pull To Refresh<br>
+## 方案1:Each SubTableView Can Pull To Refresh<br>
 ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/Each_SubTableView_Can_Pull_To_Refresh.gif)
 <br>
 
@@ -30,6 +30,7 @@
 <br>
 
 ### 说明：<br>
+也可以做成顶部全局刷新，不过我没有实现。<br>
 把banner和titleScrollView所在的透明父视图在横滚HorizontalCollectionView上方，当HorizontalCollectionView的子tableView上移时也可以做到遮挡banner，主要是用到了clipsToBounds这个属性。<br>
 也可以直接把banner，titleScrollView都直接放到横滚HorizontalCollectionView上，在横滚时实时更新banner的frame也可以。<br>
 
@@ -44,7 +45,10 @@ TitleScrollerView.clickDelegate -->ParentVieController --> (负责更新下方�
 
 
 
-## STYLE 2:Only Main SuperView Can Pull To Refresh.gif<br>
+
+
+
+## 方案2:Only Main SuperView Can Pull To Refresh<br>
 ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/Only_Main_SuperView_Can_Pull_To_Refresh.gif)
 <br>
 
