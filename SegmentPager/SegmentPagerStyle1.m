@@ -19,6 +19,7 @@ static CGFloat const topEdgeInset = 200.0f;
 static NSInteger const titleFontSize = 25;
 @interface SegmentPagerStyle1 ()<SubScrollViewDelegate,HorizontalCollectionViewDisplayCellDelegate,HorizontalCollectionViewScrollDelegate,TitleSelectedDelegate>
 {
+    CGFloat sumBannerTitleHeight;
     CGFloat titleScrollHeight;
     // 获取subSvrollView的滑动方向
     CGFloat scrollingOffsetY;
@@ -60,6 +61,7 @@ static NSInteger const titleFontSize = 25;
 
     scrollingOffsetY = -topEdgeInset;
     titleScrollHeight = (ceil)([UIFont systemFontOfSize:titleFontSize].lineHeight);
+    sumBannerTitleHeight = topEdgeInset + titleScrollHeight;
 
     self.titleArray = @[@"tableView",@"collectionView",@"scrollView"];
     self.vcArray = @[self.table,self.collection,self.scroller];
@@ -85,8 +87,8 @@ static NSInteger const titleFontSize = 25;
     CGFloat offsetY = scrollView.contentOffset.y;  // [-200~0]
     if (offsetY > -titleScrollHeight) {
         offsetY = -titleScrollHeight;
-    }else if (offsetY < -topEdgeInset-titleScrollHeight) {
-        offsetY = -topEdgeInset-titleScrollHeight;
+    }else if (offsetY < -sumBannerTitleHeight) {
+        offsetY = -sumBannerTitleHeight;
     }
        
     CGFloat scrollerYInView = [scrollView convertRect:scrollView.frame toView:self.view].origin.y;
@@ -94,16 +96,13 @@ static NSInteger const titleFontSize = 25;
     CGFloat scrollDirection = scrollingOffsetY - scrollView.contentOffset.y;
     if (scrollDirection > 0) {       // 下滑
         if (scrollerYInView >= self.titleScroll.bottom) {
-//            NSLog(@"scroll头在title下方");
             self.titleScroll.bottom = -offsetY ;
-        }else {
-//            NSLog(@"scroll头在上方");
         }
     }else if (scrollDirection < 0) {      // 上滑
-        if (scrollView.contentOffset.y > -topEdgeInset-titleScrollHeight) {
+        if (scrollView.contentOffset.y > -sumBannerTitleHeight) {
             self.titleScroll.top = (self.titleScroll.top + scrollDirection ) < 0 ? 0 : (self.titleScroll.top + scrollDirection);
-        }else {     // scrollView在title下方进行弹性滑动
-            self.titleScroll.bottom = topEdgeInset+titleScrollHeight;
+        }else {
+            self.titleScroll.bottom = sumBannerTitleHeight;
         }
     }
     scrollingOffsetY = scrollView.contentOffset.y;
@@ -124,7 +123,7 @@ static NSInteger const titleFontSize = 25;
     [self.enteringDic setObject:num forKey:key];
     
     BOOL flag = [[self.leavingDic allKeys] containsObject:key];
-    CGFloat leavingBottom = (flag) ? [[self.leavingDic objectForKey:key] floatValue] : topEdgeInset+titleScrollHeight;
+    CGFloat leavingBottom = (flag) ? [[self.leavingDic objectForKey:key] floatValue] : sumBannerTitleHeight;
     CGFloat enteringBottom = [[self.enteringDic objectForKey:key] floatValue];
     
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];

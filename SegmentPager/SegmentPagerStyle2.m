@@ -78,16 +78,11 @@ static CGFloat const refreshControlHeight = 80.0f;
 }
 - (void)subScrollViewDidScroll:(UIScrollView *)scrollView {
     
+    
+    CGFloat currentSuperScrollViewYToView = -self.superScrollView.contentOffset.y;   //[200,0]
     // 获取单次拖拽过程中subScrollView.contentOffset的极限值
     if (minSubScrollY > scrollView.contentOffset.y) {
         minSubScrollY = scrollView.contentOffset.y;
-    }
-    
-    CGFloat currentSuperScrollViewYToView = -self.superScrollView.contentOffset.y;   //[200,0]
-    // superScrollView在进行下拉刷新时，subScrillView不可以滑动
-    if (currentSuperScrollViewYToView >= topEdgeInset) {
-        [scrollView setContentOffset:CGPointMake(0, minSubScrollY)];
-        return;
     }
     
     scrollView.bounces = scrollView.contentOffset.y > (scrollView.contentSize.height-scrollView.bounds.size.height)/2 ? YES : NO;
