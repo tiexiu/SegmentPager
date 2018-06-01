@@ -10,21 +10,20 @@ STYLE 1:Each SubTableView Can Pull To Refresh<br>
 <br>
 
 结构：<br>
-static CGFloat const bannerHeight;<br>
-static CGFloat const titleHeight;<br>
-static CGFloat const sumBannerTitleHeight =bannerHeight + titleHeight;<br>
 
-
-<ParentViewController.View><br>
-|    |<br>
-| <HorizontalCollectionView>                          (frame = parentView.frame , contentSize = (subVCArray.count * parentView.width, parentView.height) )<br>
-|    | <SubViewController1.view>                     (frame = horizontalCollectionView.frame , edgeInsets.top = bannerHeight + titleHeight)<br>
-|    | <SubViewController2.view>                     (same with SubViewController1)<br>
-|    | <SubViewController3.view>                     (same with SubViewController1)<br>
-|    |<br>
-| <ClearBackgroundView>                                (frame = parentView.frame , color = clearColor)<br>
-|    | <BannerView>                                          (frame = 0,0,bannerHeight, backgroundView.width)<br>
-|    | <TitleScrollerView>                                   (frame = 0,banner.bottom, titleHeight, backgroundView.width)<br>
+    static CGFloat const bannerHeight;
+    static CGFloat const titleHeight;
+    static CGFloat const sumBannerTitleHeight =bannerHeight + titleHeight;
+    <ParentViewController.View>
+    |    |
+    | <HorizontalCollectionView>                          (frame = parentView.frame , contentSize = (subVCArray.count * parentView.width, parentView.height) )
+    |    | <SubViewController1.view>                     (frame = horizontalCollectionView.frame , edgeInsets.top = bannerHeight + titleHeight)
+    |    | <SubViewController2.view>                     (same with SubViewController1)
+    |    | <SubViewController3.view>                     (same with SubViewController1)
+    |    |
+    | <ClearBackgroundView>                                (frame = parentView.frame , color = clearColor)
+    |    | <BannerView>                                          (frame = 0,0,bannerHeight, backgroundView.width)
+    |    | <TitleScrollerView>                                   (frame = 0,banner.bottom, titleHeight, backgroundView.width)
 
 结构图：<br>
 ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/style1.gif)
@@ -54,20 +53,19 @@ STYLE 2:Only Main SuperView Can Pull To Refresh.gif<br>
 
 结构:<br>
 
-static CGFloat const titleScrollHeight ;<br>
-static CGFloat const bannerHeight;<br>
-
-<ParentViewController.View><br>
-|    |<br>
-| <SuperScrollView>                                             (frame =  parentView.frame , edgeInsets.top = bannerHeight , contentOffset.y = -bannerHeight)<br>
-|    |<br>
-|    | <BannerView>                                               (frame = (0, -bannerHeight, superView.width, bannerHeight) )<br>
-|    | <TitleScrollView>                                           (frame = (0, 0, superView.width, titleScrollHeight) )<br>
-|    | <HorizontalCollectionView>                          (frame = (0, titleScrollView.bottom, superView.width, superView.height - titleScrollHeight )<br>
-|    |    |<br>
-|    |    | <SubViewController1.view>                     (frame = (0, 0, horizontalCollectionView.size) , edgeInsets.top = 0)<br>
-|    |    | <SubViewController2.view>                     (same with SubViewController1)<br>
-|    |    | <SubViewController3.view>                     (same with SubViewController1)<br>
+    static CGFloat const titleScrollHeight ;
+    static CGFloat const bannerHeight;
+    <ParentViewController.View>
+    |    |
+    | <SuperScrollView>                                             (frame =  parentView.frame , edgeInsets.top = bannerHeight , contentOffset.y = -bannerHeight)
+    |    |
+    |    | <BannerView>                                               (frame = (0, -bannerHeight, superView.width, bannerHeight) )
+    |    | <TitleScrollView>                                           (frame = (0, 0, superView.width, titleScrollHeight) )
+    |    | <HorizontalCollectionView>                          (frame = (0, titleScrollView.bottom, superView.width, superView.height - titleScrollHeight )
+    |    |    |
+    |    |    | <SubViewController1.view>                     (frame = (0, 0, horizontalCollectionView.size) , edgeInsets.top = 0)
+    |    |    | <SubViewController2.view>                     (same with SubViewController1)
+    |    |    | <SubViewController3.view>                     (same with SubViewController1)
 
 结构图：<br>
 ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/style2.gif)
