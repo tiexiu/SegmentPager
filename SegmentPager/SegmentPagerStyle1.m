@@ -161,6 +161,7 @@ static CGFloat const sumBannerTitleHeight = 200.0f + 40.0f;
 
     BaseSubScrollViewControllerStyle1 *vc = (BaseSubScrollViewControllerStyle1 *)self.vcArray[index];
     scrollingOffsetY = vc.baseScrollView.contentOffset.y;
+    
 }
 #pragma --mark lazyLoad
 - (TitleScrollView *)titleScroll {

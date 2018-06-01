@@ -158,15 +158,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 
 #pragma --mark HorizontalCollectionViewScrollDelegate
 // 横滚时subScrollView不可以滚动
-- (void)horizontalCollectionViewWillBegingDragging:(UIScrollView *)scrollView atIndex:(NSInteger)index{
-    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)self.vcArray[index];
-    vc.baseScrollView.scrollEnabled = NO;
-    
-}
-- (void)horizontalCollectionViewDidEndDecelerating:(UIScrollView *)scrollView atIndex:(NSInteger)index{
-    BaseSubScrollViewControllerStyle2 *vc = (BaseSubScrollViewControllerStyle2 *)self.vcArray[index];
-    vc.baseScrollView.scrollEnabled = YES;
-}
+
 - (void)horizontalCollectionViewWillEndDragging:(UIScrollView *)scrollView currentIndex:(NSInteger)currentIndex targetIndex:(NSInteger)targetIndex{
     [self.titleScrollView updateTitleScrollViewWithIndex:targetIndex];
     // 切换到新的控制器，默认superScroll可以滑动
