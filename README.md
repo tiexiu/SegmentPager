@@ -1,32 +1,33 @@
 # SegmentPager
-头视图+标题栏+横滚视图 ，scrollView嵌套
+    头视图+标题栏+横滚视图 ，scrollView嵌套
 
 
-下面两种实现方式用的是都是同一套标题栏和横滚视图，实现了比较基础的功能。
-横滚标题栏是用UIScrollView实现；下部横滚视图用UICollectionView装载。
-
-STYLE 1:Each SubTableView Can Pull To Refresh
-![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/Each_SubTableView_Can_Pull_To_Refresh.gif)
-
-结构：
-static CGFloat const bannerHeight;
-static CGFloat const titleHeight;
-static CGFloat const sumBannerTitleHeight =bannerHeight + titleHeight;
+    下面两种实现方式用的是都是同一套标题栏和横滚视图，实现了比较基础的功能。  
+    横滚标题栏是用UIScrollView实现；下部横滚视图用UICollectionView装载。
 
 
-<ParentViewController.View>
-|    |
-| <HorizontalCollectionView>                          (frame = parentView.frame , contentSize = (subVCArray.count * parentView.width, parentView.height) )
-|    | <SubViewController1.view>                     (frame = horizontalCollectionView.frame , edgeInsets.top = bannerHeight + titleHeight)
-|    | <SubViewController2.view>                     (same with SubViewController1)
-|    | <SubViewController3.view>                     (same with SubViewController1)
-|    |
-| <ClearBackgroundView>                                (frame = parentView.frame , color = clearColor)
-|    | <BannerView>                                          (frame = 0,0,bannerHeight, backgroundView.width)
-|    | <TitleScrollerView>                                   (frame = 0,banner.bottom, titleHeight, backgroundView.width)
+    STYLE 1:Each SubTableView Can Pull To Refresh
+    ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/Each_SubTableView_Can_Pull_To_Refresh.gif)
 
-结构图：
-![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/style1.gif)
+    结构：
+    static CGFloat const bannerHeight;
+    static CGFloat const titleHeight;
+    static CGFloat const sumBannerTitleHeight =bannerHeight + titleHeight;
+
+
+    <ParentViewController.View>
+    |    |
+    | <HorizontalCollectionView>                          (frame = parentView.frame , contentSize = (subVCArray.count *     parentView.width, parentView.height) )
+    |    | <SubViewController1.view>                     (frame = horizontalCollectionView.frame , edgeInsets.top = bannerHeight + titleHeight)
+    |    | <SubViewController2.view>                     (same with SubViewController1)
+    |    | <SubViewController3.view>                     (same with SubViewController1)
+    |    |
+    | <ClearBackgroundView>                                (frame = parentView.frame , color = clearColor)
+    |    | <BannerView>                                          (frame = 0,0,bannerHeight, backgroundView.width)
+    |    | <TitleScrollerView>                                   (frame = 0,banner.bottom, titleHeight, backgroundView.width)
+
+    结构图：
+    ![image](https://github.com/tiexiu/SegmentPager/blob/master/GIF/style1.gif)
 
 
 
