@@ -64,7 +64,7 @@ static NSString *collectionCellID = @"collectionCellID";
         _collection.showsHorizontalScrollIndicator = NO;
         [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellID];
         _collection.bounces = YES;
-        _collection.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0 );
+        _collection.contentInset = UIEdgeInsetsMake(sumBannerTitleHeight, 0, 0, 0 );
         _collection.backgroundColor = [UIColor whiteColor];
         _collection.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     }

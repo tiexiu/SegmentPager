@@ -32,10 +32,8 @@
     }
     return self;
 }
-
-- (void)titleScrollViewWithTitleArray:(NSArray *)titleArray font:(UIFont *)font initialIndex:(NSInteger)index{
+- (void)titleScrollViewWithTitleArray:(NSArray *)titleArray height:(CGFloat)height initialIndex:(NSInteger)index {
     lineBarheight = 2;
-    
     _titleArray = titleArray;
     // 添加label,保存label的frame
     __block CGFloat labelX = 0;
@@ -43,23 +41,24 @@
     [_titleArray enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         @strongify(self);
         UILabel *label = [[UILabel alloc] init];
-        label.font = font;
         label.text = obj;
         label.userInteractionEnabled = YES;
         label.textAlignment = NSTextAlignmentCenter;
-        CGSize titleSize = [self sizeForString:obj inFont:font];
-        CGSize labelSize = CGSizeMake(titleSize.width + 50, titleSize.height - lineBarheight);
+        label.font = [UIFont systemFontOfSize:ceilf(height*0.6)];
+        CGSize size = CGSizeMake(MAXFLOAT, height);//设置高度宽度的最大限度
+        CGRect rect = [label.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName :[UIFont systemFontOfSize:height]} context:nil];
+        CGSize labelSize = CGSizeMake( rect.size.width , height-lineBarheight);
         label.frame = (CGRect){CGPointMake(labelX,0),labelSize};
         [self addSubview:label];
         labelX = labelX + labelSize.width;
-        
         [self addTapGestureWithLabel:label OfIndex:idx];
         [self.labelFrameArray addObject:[NSValue valueWithCGRect:label.frame]];
     }];
-    self.contentSize = CGSizeMake(labelX, font.lineHeight);
+
+    
+    self.contentSize = CGSizeMake(labelX, height);
     [self addAnimatedLineAtIndex:index];
 }
-
 
 - (void)updateTitleScrollViewWithIndex:(NSUInteger)index {
     [self titleScrollWithIndex:index];

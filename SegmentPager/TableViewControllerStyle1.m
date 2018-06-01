@@ -58,7 +58,7 @@ static CGFloat const rowHeight = 44.0f;
         _tableView.rowHeight = rowHeight;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0 );
+        _tableView.contentInset = UIEdgeInsetsMake(sumBannerTitleHeight, 0, 0, 0 );
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:newTableCellID];
         _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

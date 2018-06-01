@@ -15,12 +15,12 @@
 #import "UIView+Layer.h"
 #import "HitTestView.h"
 
-static CGFloat const topEdgeInset = 200.0f;
-static NSInteger const titleFontSize = 25;
+static CGFloat const bannerHeight = 200.0f;
+static CGFloat const titleScrollHeight = 40.0f;
+static CGFloat const sumBannerTitleHeight = 200.0f + 40.0f;
+
 @interface SegmentPagerStyle1 ()<SubScrollViewDelegate,HorizontalCollectionViewDisplayCellDelegate,HorizontalCollectionViewScrollDelegate,TitleSelectedDelegate>
 {
-    CGFloat sumBannerTitleHeight;
-    CGFloat titleScrollHeight;
     // 获取subSvrollView的滑动方向
     CGFloat scrollingOffsetY;
 }
@@ -59,10 +59,8 @@ static NSInteger const titleFontSize = 25;
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
 
-    scrollingOffsetY = -topEdgeInset;
-    titleScrollHeight = (ceil)([UIFont systemFontOfSize:titleFontSize].lineHeight);
-    sumBannerTitleHeight = topEdgeInset + titleScrollHeight;
-
+    scrollingOffsetY = -bannerHeight;
+    
     self.titleArray = @[@"tableView",@"collectionView",@"scrollView"];
     self.vcArray = @[self.table,self.collection,self.scroller];
 
@@ -136,8 +134,8 @@ static NSInteger const titleFontSize = 25;
     CGFloat titleBottom = CGRectGetMaxY(titleRect);
     CGFloat titleHeight = CGRectGetHeight(titleRect);
 
-    self.bannerBackview.frame = CGRectMake(0, titleBottom-topEdgeInset-titleHeight, CGRectGetWidth(self.view.frame), topEdgeInset);
-    self.banner.frame = CGRectMake(0,topEdgeInset+titleHeight -titleBottom, CGRectGetWidth(self.view.frame), topEdgeInset);
+    self.bannerBackview.frame = CGRectMake(0, titleBottom-bannerHeight-titleHeight, CGRectGetWidth(self.view.frame), bannerHeight);
+    self.banner.frame = CGRectMake(0,bannerHeight+titleHeight -titleBottom, CGRectGetWidth(self.view.frame), bannerHeight);
 }
 #pragma --mark bannerTapAction
 - (void)tapOnBanner {
@@ -168,10 +166,10 @@ static NSInteger const titleFontSize = 25;
 - (TitleScrollView *)titleScroll {
     if (_titleScroll == nil) {
         _titleScroll = [[TitleScrollView alloc] initWithFrame:(CGRect){
-            CGPointMake(0, topEdgeInset) ,
+            CGPointMake(0, bannerHeight) ,
             CGSizeMake(CGRectGetWidth(self.view.frame), titleScrollHeight)
         }];
-        [_titleScroll titleScrollViewWithTitleArray:self.titleArray font:[UIFont systemFontOfSize:titleFontSize] initialIndex:0];
+        [_titleScroll titleScrollViewWithTitleArray:self.titleArray height:titleScrollHeight initialIndex:0];
         _titleScroll.titleSelectedDelegate = self;
         [_titleScroll addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -198,14 +196,14 @@ static NSInteger const titleFontSize = 25;
 
 - (UIView *)bannerBackview {
     if (!_bannerBackview) {
-        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, CGRectGetWidth(self.view.frame), topEdgeInset)];
+        _bannerBackview = [[UIView alloc] initWithFrame:CGRectMake(0,0, CGRectGetWidth(self.view.frame), bannerHeight)];
         _bannerBackview.clipsToBounds = YES;
     }
     return _bannerBackview;
 }
 - (UIView *)banner {
     if (!_banner) {
-        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), topEdgeInset)];
+        _banner = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , CGRectGetWidth(self.view.frame), bannerHeight)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:_banner.bounds];
         imageView.image = [UIImage imageNamed:@"banner1"];
         imageView.contentMode = UIViewContentModeScaleAspectFill;

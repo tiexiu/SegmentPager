@@ -19,6 +19,6 @@
 
 // 横滚结束后才进行title横滚动画
 - (void)updateTitleScrollViewWithIndex:(NSUInteger)index;
-- (void)titleScrollViewWithTitleArray:(NSArray *)titleArray font:(UIFont *)font initialIndex:(NSInteger)index;
+- (void)titleScrollViewWithTitleArray:(NSArray *)titleArray height:(CGFloat)height initialIndex:(NSInteger)index;
 
 @end

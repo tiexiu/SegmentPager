@@ -30,7 +30,7 @@
         _scrollView.delegate = self;
         _scrollView.translatesAutoresizingMaskIntoConstraints = NO;
         _scrollView.bounces = YES;
-        _scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+titleHeight, 0, 0, 0 );
+        _scrollView.contentInset = UIEdgeInsetsMake(sumBannerTitleHeight, 0, 0, 0 );
     }
     return _scrollView;
 }

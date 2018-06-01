@@ -48,16 +48,7 @@ static CGFloat const rowHeight = 44.0f;
     cell.textLabel.text = [NSString stringWithFormat:@"%ld",(long)indexPath.row];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == arrayCount) {
-        
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        cell.textLabel.text = @"正在加载...";
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            cell.textLabel.text = @"点击加载更多...";
-        });
-    }else {
-        NSLog(@"点击了第%ld个cell",indexPath.row);
-    }
+    NSLog(@"点击了第%ld个cell",indexPath.row);
 }
 
 - (GestureRecognizerTableView *)tableView {

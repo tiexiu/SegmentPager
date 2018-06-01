@@ -19,9 +19,9 @@
 @interface BaseSubScrollViewControllerStyle1 : UIViewController
 {
     @protected
-    CGFloat topEdgeInset;
-    NSInteger titleHeight;
-
+    CGFloat bannerHeight;
+    CGFloat titleHeight;
+    CGFloat sumBannerTitleHeight;
 }
 @property (nonatomic,weak) id<SubScrollViewDelegate>subScrollViewDidScrollDelegate;
 @property (nonatomic) UIScrollView *baseScrollView;

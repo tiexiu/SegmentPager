@@ -14,8 +14,8 @@
 #import "ScrollViewControllerStyle2.h"
 #import "CollectionViewControllerStyle2.h"
 
-static NSInteger const titleFontSize = 25;
-static CGFloat const topEdgeInset = 200.0f;
+static NSInteger const titleScrollHeight = 40.0f;
+static CGFloat const bannerHeight = 200.0f;
 static CGFloat const refreshControlHeight = 80.0f;
 
 @interface SegmentPagerStyle2 ()<UIScrollViewDelegate,SubScrollViewDelegate,HorizontalCollectionViewScrollDelegate,TitleSelectedDelegate>
@@ -97,7 +97,7 @@ static CGFloat const refreshControlHeight = 80.0f;
         }
     }else if (direction < 0 ) {  // 上滑
         if (scrollView.contentOffset.y > 0) {
-            if (currentSuperScrollViewYToView > 0 && currentSuperScrollViewYToView <= topEdgeInset) {
+            if (currentSuperScrollViewYToView > 0 ) {
                 [scrollView setContentOffset:CGPointMake(0, minSubScrollY)];
                 canSuperScrollViewScroll = YES;
             }else {
@@ -128,10 +128,10 @@ static CGFloat const refreshControlHeight = 80.0f;
         [scrollView setContentOffset:CGPointZero];
     }
 
-    CGFloat bannerY = scrollView.contentOffset.y > -topEdgeInset ? scrollView.contentOffset.y : -topEdgeInset ;
+    CGFloat bannerY = scrollView.contentOffset.y > -bannerHeight ? scrollView.contentOffset.y : -bannerHeight ;
     self.banner.frame = (CGRect){CGPointMake(0,bannerY),self.banner.bounds.size};
     
-    if (scrollView.contentOffset.y <= -(topEdgeInset + refreshControlHeight)) {
+    if (scrollView.contentOffset.y <= -(bannerHeight + refreshControlHeight)) {
         if (self.refreshControl.tag == 0) {
             self.refreshControl.text = @"释放刷新";
         }
@@ -144,13 +144,13 @@ static CGFloat const refreshControlHeight = 80.0f;
     if (self.refreshControl.tag == 1) {
         [UIView animateWithDuration:.3 animations:^{
             self.refreshControl.text = @"正在加载...";
-            scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset+refreshControlHeight, 0, 0, 0);
+            scrollView.contentInset = UIEdgeInsetsMake(bannerHeight+refreshControlHeight, 0, 0, 0);
         }];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [UIView animateWithDuration:.3 animations:^{
                 self.refreshControl.tag = 0;
                 self.refreshControl.text = @"下拉刷新";
-                scrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
+                scrollView.contentInset = UIEdgeInsetsMake(bannerHeight, 0, 0, 0);
             }];
         });
     }
@@ -195,8 +195,8 @@ static CGFloat const refreshControlHeight = 80.0f;
         CGRect superScrollViewFrame = CGRectMake(0,0,CGRectGetWidth(self.view.frame),CGRectGetHeight(self.view.frame));
         _superScrollView = [[UIScrollView alloc] initWithFrame:superScrollViewFrame];
         _superScrollView.contentSize = superScrollViewFrame.size;
-        _superScrollView.contentInset = UIEdgeInsetsMake(topEdgeInset, 0, 0, 0);
-        _superScrollView.contentOffset = CGPointMake(0,-topEdgeInset);
+        _superScrollView.contentInset = UIEdgeInsetsMake(bannerHeight, 0, 0, 0);
+        _superScrollView.contentOffset = CGPointMake(0,-bannerHeight);
         _superScrollView.delegate = self;
         _superScrollView.bounces = YES;
         _superScrollView.showsVerticalScrollIndicator = NO;
@@ -207,9 +207,8 @@ static CGFloat const refreshControlHeight = 80.0f;
 
 - (TitleScrollView *)titleScrollView {
     if (_titleScrollView == nil) {
-        UIFont *titleFont = [UIFont systemFontOfSize:titleFontSize];
-        _titleScrollView = [[TitleScrollView alloc] initWithFrame:(CGRect){CGPointMake(0, 0),CGSizeMake(CGRectGetWidth(self.superScrollView.frame), ceil(titleFont.lineHeight))}];
-        [_titleScrollView titleScrollViewWithTitleArray:self.titleArray font:titleFont initialIndex:0];
+        _titleScrollView = [[TitleScrollView alloc] initWithFrame:(CGRect){CGPointZero,CGSizeMake(CGRectGetWidth(self.view.frame), titleScrollHeight)}];
+        [_titleScrollView titleScrollViewWithTitleArray:self.titleArray height:titleScrollHeight initialIndex:0];
         _titleScrollView.titleSelectedDelegate = self;
     }
     return _titleScrollView;
@@ -231,7 +230,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 
 - (UIImageView *)banner {
     if (_banner == nil) {
-        CGRect bannerFrame = CGRectMake(0, -topEdgeInset, CGRectGetWidth(self.view.frame), topEdgeInset);
+        CGRect bannerFrame = CGRectMake(0, -bannerHeight, CGRectGetWidth(self.view.frame), bannerHeight);
         _banner = [[UIImageView alloc] initWithFrame:bannerFrame];
         _banner.userInteractionEnabled = YES;
         _banner.image = [UIImage imageNamed:@"banner1"];
@@ -271,7 +270,7 @@ static CGFloat const refreshControlHeight = 80.0f;
 
 - (UILabel *)refreshControl {
     if(!_refreshControl) {
-        _refreshControl = [[UILabel alloc] initWithFrame:CGRectMake(0, -(refreshControlHeight+topEdgeInset), CGRectGetWidth(self.view.frame), refreshControlHeight)];
+        _refreshControl = [[UILabel alloc] initWithFrame:CGRectMake(0, -(refreshControlHeight+bannerHeight), CGRectGetWidth(self.view.frame), refreshControlHeight)];
         _refreshControl.text = @"下拉刷新";
         _refreshControl.textAlignment = NSTextAlignmentCenter;
         _refreshControl.tag = 0;
